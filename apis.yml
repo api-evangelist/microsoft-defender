@@ -1,0 +1,115 @@
+name: Microsoft Defender APIs
+description: Collection of Microsoft Defender security APIs for threat protection, endpoint security, and security operations
+image: https://www.microsoft.com/favicon.ico
+created: 2024-01-15 00:00:00+00:00
+modified: 2024-01-15 00:00:00+00:00
+specificationVersion: '0.18'
+url: https://example.com/apis.yaml
+apis:
+- name: Microsoft Defender for Endpoint API
+  description: API for endpoint detection and response, threat and vulnerability management, and automated investigation and remediation
+  image: https://www.microsoft.com/favicon.ico
+  humanUrl: https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/
+  baseUrl: https://api.securitycenter.microsoft.com/api
+  tags:
+  - Endpoint Security
+  - Threat Detection
+  - Vulnerability Management
+  - EDR
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/api/apis-intro
+  - type: OpenAPI
+    url: https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/api/api-supported
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/api/exposed-apis-create-app-webapp
+  - type: Pricing
+    url: https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
+  contact:
+  - type: Support
+    url: https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/api/troubleshoot-api
+- name: Microsoft Defender for Cloud Apps API
+  description: Cloud Access Security Broker (CASB) API for discovering, investigating, and governing cloud apps
+  image: https://www.microsoft.com/favicon.ico
+  humanUrl: https://learn.microsoft.com/en-us/defender-cloud-apps/
+  baseUrl: https://portal.cloudappsecurity.com/api
+  tags:
+  - Cloud Security
+  - CASB
+  - Shadow IT
+  - Data Protection
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/defender-cloud-apps/api-introduction
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/defender-cloud-apps/api-authentication
+  - type: Activities API
+    url: https://learn.microsoft.com/en-us/defender-cloud-apps/api-activities
+  - type: Alerts API
+    url: https://learn.microsoft.com/en-us/defender-cloud-apps/api-alerts
+- name: Microsoft Defender Threat Intelligence API
+  description: Access threat intelligence data, indicators of compromise (IOCs), and threat analytics
+  image: https://www.microsoft.com/favicon.ico
+  humanUrl: https://learn.microsoft.com/en-us/defender/threat-intelligence/
+  baseUrl: https://graph.microsoft.com/v1.0/security/threatIntelligence
+  tags:
+  - Threat Intelligence
+  - IOC
+  - Threat Analytics
+  - Security Intelligence
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/security-threatintelligence-overview
+  - type: API Reference
+    url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/graph/auth/
+- name: Microsoft Graph Security API
+  description: Unified API for Microsoft security products including Defender alerts, secure scores, and security actions
+  image: https://www.microsoft.com/favicon.ico
+  humanUrl: https://learn.microsoft.com/en-us/graph/security-concept-overview
+  baseUrl: https://graph.microsoft.com/v1.0/security
+  tags:
+  - Security Graph
+  - Alerts
+  - Secure Score
+  - Threat Protection
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
+  - type: OpenAPI
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  - type: SDKs
+    url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
+  - type: Code Samples
+    url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
+- name: Microsoft Defender for Office 365 API
+  description: API for email and collaboration protection including anti-phishing, anti-malware, and safe attachments
+  image: https://www.microsoft.com/favicon.ico
+  humanUrl: https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/
+  baseUrl: https://graph.microsoft.com/v1.0/security
+  tags:
+  - Email Security
+  - Phishing Protection
+  - Collaboration Security
+  - Safe Attachments
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/defender-for-office-365
+  - type: Threat Protection
+    url: https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/threat-explorer
+maintainers:
+- name: Microsoft Security
+  email: security@microsoft.com
+  url: https://www.microsoft.com/en-us/security
+common:
+- type: Portal
+  url: https://security.microsoft.com
+- type: Documentation Hub
+  url: https://learn.microsoft.com/en-us/microsoft-365/security/
+- type: Status Page
+  url: https://status.azure.com/
+- type: Terms of Service
+  url: https://www.microsoft.com/en-us/legal/terms-of-use
+- type: Privacy Policy
+  url: https://privacy.microsoft.com/en-us/privacystatement
