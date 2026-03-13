@@ -1,0 +1,394 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "defender": "https://learn.microsoft.com/en-us/defender-endpoint/api/",
+    "security": "https://schema.org/SecurityEvent/",
+    "cve": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=",
+    "mitre": "https://attack.mitre.org/techniques/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Alert": {
+      "@id": "defender:alerts",
+      "@context": {
+        "id": {
+          "@id": "identifier",
+          "@type": "xsd:string"
+        },
+        "title": {
+          "@id": "name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "description",
+          "@type": "xsd:string"
+        },
+        "alertCreationTime": {
+          "@id": "dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastEventTime": {
+          "@id": "defender:lastEventTime",
+          "@type": "xsd:dateTime"
+        },
+        "firstEventTime": {
+          "@id": "defender:firstEventTime",
+          "@type": "xsd:dateTime"
+        },
+        "lastUpdateTime": {
+          "@id": "dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "resolvedTime": {
+          "@id": "defender:resolvedTime",
+          "@type": "xsd:dateTime"
+        },
+        "incidentId": {
+          "@id": "defender:incidentId",
+          "@type": "xsd:integer"
+        },
+        "investigationId": {
+          "@id": "defender:investigationId",
+          "@type": "xsd:integer"
+        },
+        "investigationState": {
+          "@id": "defender:investigationState",
+          "@type": "xsd:string"
+        },
+        "assignedTo": {
+          "@id": "defender:assignedTo",
+          "@type": "xsd:string"
+        },
+        "rbacGroupName": {
+          "@id": "defender:rbacGroupName",
+          "@type": "xsd:string"
+        },
+        "mitreTechniques": {
+          "@id": "defender:mitreTechniques",
+          "@container": "@set"
+        },
+        "severity": {
+          "@id": "security:severity",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "defender:alertStatus",
+          "@type": "xsd:string"
+        },
+        "classification": {
+          "@id": "defender:classification",
+          "@type": "xsd:string"
+        },
+        "determination": {
+          "@id": "defender:determination",
+          "@type": "xsd:string"
+        },
+        "category": {
+          "@id": "category",
+          "@type": "xsd:string"
+        },
+        "detectionSource": {
+          "@id": "defender:detectionSource",
+          "@type": "xsd:string"
+        },
+        "threatFamilyName": {
+          "@id": "defender:threatFamilyName",
+          "@type": "xsd:string"
+        },
+        "threatName": {
+          "@id": "defender:threatName",
+          "@type": "xsd:string"
+        },
+        "machineId": {
+          "@id": "defender:machineId",
+          "@type": "xsd:string"
+        },
+        "computerDnsName": {
+          "@id": "defender:computerDnsName",
+          "@type": "xsd:string"
+        },
+        "aadTenantId": {
+          "@id": "defender:aadTenantId",
+          "@type": "xsd:string"
+        },
+        "detectorId": {
+          "@id": "defender:detectorId",
+          "@type": "xsd:string"
+        },
+        "comments": {
+          "@id": "comment",
+          "@container": "@set"
+        },
+        "evidence": {
+          "@id": "defender:evidence",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Machine": {
+      "@id": "defender:machine",
+      "@context": {
+        "id": {
+          "@id": "identifier",
+          "@type": "xsd:string"
+        },
+        "computerDnsName": {
+          "@id": "defender:computerDnsName",
+          "@type": "xsd:string"
+        },
+        "firstSeen": {
+          "@id": "dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastSeen": {
+          "@id": "dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "osPlatform": {
+          "@id": "operatingSystem",
+          "@type": "xsd:string"
+        },
+        "onboardingStatus": {
+          "@id": "defender:onboardingStatus",
+          "@type": "xsd:string"
+        },
+        "version": {
+          "@id": "softwareVersion",
+          "@type": "xsd:string"
+        },
+        "osBuild": {
+          "@id": "defender:osBuild",
+          "@type": "xsd:integer"
+        },
+        "lastIpAddress": {
+          "@id": "defender:lastIpAddress",
+          "@type": "xsd:string"
+        },
+        "lastExternalIpAddress": {
+          "@id": "defender:lastExternalIpAddress",
+          "@type": "xsd:string"
+        },
+        "healthStatus": {
+          "@id": "defender:healthStatus",
+          "@type": "xsd:string"
+        },
+        "rbacGroupName": {
+          "@id": "defender:rbacGroupName",
+          "@type": "xsd:string"
+        },
+        "rbacGroupId": {
+          "@id": "defender:rbacGroupId",
+          "@type": "xsd:integer"
+        },
+        "riskScore": {
+          "@id": "defender:riskScore",
+          "@type": "xsd:string"
+        },
+        "aadDeviceId": {
+          "@id": "defender:aadDeviceId",
+          "@type": "xsd:string"
+        },
+        "machineTags": {
+          "@id": "keywords",
+          "@container": "@set"
+        },
+        "exposureLevel": {
+          "@id": "defender:exposureLevel",
+          "@type": "xsd:string"
+        },
+        "deviceValue": {
+          "@id": "defender:deviceValue",
+          "@type": "xsd:string"
+        },
+        "osArchitecture": {
+          "@id": "defender:osArchitecture",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Vulnerability": {
+      "@id": "defender:vulnerability",
+      "@context": {
+        "id": {
+          "@id": "identifier",
+          "@type": "xsd:string"
+        },
+        "name": {
+          "@id": "name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "description",
+          "@type": "xsd:string"
+        },
+        "severity": {
+          "@id": "security:severity",
+          "@type": "xsd:string"
+        },
+        "cvssV3": {
+          "@id": "defender:cvssV3",
+          "@type": "xsd:double"
+        },
+        "cvssVector": {
+          "@id": "defender:cvssVector",
+          "@type": "xsd:string"
+        },
+        "exposedMachines": {
+          "@id": "defender:exposedMachines",
+          "@type": "xsd:integer"
+        },
+        "publishedOn": {
+          "@id": "datePublished",
+          "@type": "xsd:dateTime"
+        },
+        "updatedOn": {
+          "@id": "dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "publicExploit": {
+          "@id": "defender:publicExploit",
+          "@type": "xsd:boolean"
+        },
+        "exploitVerified": {
+          "@id": "defender:exploitVerified",
+          "@type": "xsd:boolean"
+        },
+        "exploitInKit": {
+          "@id": "defender:exploitInKit",
+          "@type": "xsd:boolean"
+        },
+        "exploitTypes": {
+          "@id": "defender:exploitTypes",
+          "@container": "@set"
+        },
+        "exploitUris": {
+          "@id": "defender:exploitUris",
+          "@container": "@set",
+          "@type": "@id"
+        },
+        "cveSupportability": {
+          "@id": "defender:cveSupportability",
+          "@type": "xsd:string"
+        },
+        "epss": {
+          "@id": "defender:epss",
+          "@type": "xsd:double"
+        },
+        "status": {
+          "@id": "defender:vulnerabilityStatus",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "AlertComment": {
+      "@id": "defender:alertComment",
+      "@context": {
+        "comment": {
+          "@id": "text",
+          "@type": "xsd:string"
+        },
+        "createdBy": {
+          "@id": "author",
+          "@type": "xsd:string"
+        },
+        "createdTime": {
+          "@id": "dateCreated",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "AlertEvidence": {
+      "@id": "defender:alertEvidence",
+      "@context": {
+        "entityType": {
+          "@id": "additionalType",
+          "@type": "xsd:string"
+        },
+        "evidenceCreationTime": {
+          "@id": "dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "sha1": {
+          "@id": "defender:sha1",
+          "@type": "xsd:string"
+        },
+        "sha256": {
+          "@id": "defender:sha256",
+          "@type": "xsd:string"
+        },
+        "fileName": {
+          "@id": "defender:fileName",
+          "@type": "xsd:string"
+        },
+        "filePath": {
+          "@id": "defender:filePath",
+          "@type": "xsd:string"
+        },
+        "processId": {
+          "@id": "defender:processId",
+          "@type": "xsd:integer"
+        },
+        "processCommandLine": {
+          "@id": "defender:processCommandLine",
+          "@type": "xsd:string"
+        },
+        "processCreationTime": {
+          "@id": "defender:processCreationTime",
+          "@type": "xsd:dateTime"
+        },
+        "parentProcessId": {
+          "@id": "defender:parentProcessId",
+          "@type": "xsd:integer"
+        },
+        "parentProcessCreationTime": {
+          "@id": "defender:parentProcessCreationTime",
+          "@type": "xsd:dateTime"
+        },
+        "parentProcessFileName": {
+          "@id": "defender:parentProcessFileName",
+          "@type": "xsd:string"
+        },
+        "parentProcessFilePath": {
+          "@id": "defender:parentProcessFilePath",
+          "@type": "xsd:string"
+        },
+        "ipAddress": {
+          "@id": "defender:ipAddress",
+          "@type": "xsd:string"
+        },
+        "url": {
+          "@id": "url",
+          "@type": "@id"
+        },
+        "accountName": {
+          "@id": "defender:accountName",
+          "@type": "xsd:string"
+        },
+        "domainName": {
+          "@id": "defender:domainName",
+          "@type": "xsd:string"
+        },
+        "userSid": {
+          "@id": "defender:userSid",
+          "@type": "xsd:string"
+        },
+        "aadUserId": {
+          "@id": "defender:aadUserId",
+          "@type": "xsd:string"
+        },
+        "userPrincipalName": {
+          "@id": "defender:userPrincipalName",
+          "@type": "xsd:string"
+        },
+        "detectionStatus": {
+          "@id": "defender:detectionStatus",
+          "@type": "xsd:string"
+        }
+      }
+    }
+  }
+}
