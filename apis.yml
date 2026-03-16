@@ -2,7 +2,7 @@ name: Microsoft Defender APIs
 description: Collection of Microsoft Defender security APIs for threat protection, endpoint security, and security operations
 image: https://www.microsoft.com/favicon.ico
 created: 2024-01-15 00:00:00+00:00
-modified: 2026-03-03 00:00:00+00:00
+modified: '2026-03-16'
 specificationVersion: '0.18'
 url: https://example.com/apis.yaml
 apis:
@@ -192,9 +192,8 @@ apis:
   - type: Graph Security API
     url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
 maintainers:
-- name: Kin Lane
+- FN: Kin Lane
   email: kin@apievangelist.com
-  url: https://apievangelist.com
 common:
 - type: Portal
   url: https://security.microsoft.com
