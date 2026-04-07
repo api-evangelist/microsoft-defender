@@ -279,8 +279,8 @@ paths:
       description: >-
         Retrieves a collection of alerts related to a specific machine.
       tags:
-        - Machines
         - Alerts
+        - Machines
       parameters:
         - name: machineId
           in: path
@@ -437,8 +437,8 @@ paths:
       description: >-
         Retrieves a list of machines affected by a specific vulnerability.
       tags:
-        - Vulnerabilities
         - Machines
+        - Vulnerabilities
       parameters:
         - name: vulnerabilityId
           in: path

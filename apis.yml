@@ -13,14 +13,13 @@ apis:
       API for endpoint detection and response, threat and vulnerability management,
       and automated investigation and remediation.
     image: https://www.microsoft.com/favicon.ico
-    humanUrl: 
-      https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/
+    humanUrl: https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/
     baseUrl: https://api.securitycenter.microsoft.com/api
     tags:
+      - EDR
       - Endpoint Security
       - Threat Detection
       - Vulnerability Management
-      - EDR
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/defender-endpoint/api/apis-intro
@@ -31,32 +30,24 @@ apis:
       - type: JSONLD
         url: json-ld/microsoft-defender-context.jsonld
       - type: Authentication
-        url: 
-          https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp
+        url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp
       - type: Pricing
-        url: 
-          https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
+        url: https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
       - type: API Reference
-        url: 
-          https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-list
+        url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-list
       - type: Release Notes
-        url: 
-          https://learn.microsoft.com/en-us/defender-endpoint/api/api-release-notes
+        url: https://learn.microsoft.com/en-us/defender-endpoint/api/api-release-notes
       - type: Management APIs
-        url: 
-          https://learn.microsoft.com/en-us/defender-endpoint/api/management-apis
+        url: https://learn.microsoft.com/en-us/defender-endpoint/api/management-apis
       - type: Alerts API
         url: https://learn.microsoft.com/en-us/defender-endpoint/api/get-alerts
       - type: Vulnerabilities API
-        url: 
-          https://learn.microsoft.com/en-us/defender-endpoint/api/get-all-vulnerabilities
+        url: https://learn.microsoft.com/en-us/defender-endpoint/api/get-all-vulnerabilities
       - type: Security Recommendations API
-        url: 
-          https://learn.microsoft.com/en-us/defender-endpoint/api/get-security-recommendations
+        url: https://learn.microsoft.com/en-us/defender-endpoint/api/get-security-recommendations
     contact:
       - type: Support
-        url: 
-          https://learn.microsoft.com/en-us/defender-endpoint/api/troubleshoot-api
+        url: https://learn.microsoft.com/en-us/defender-endpoint/api/troubleshoot-api
   - name: Microsoft Defender for Cloud Apps API
     description: >-
       Cloud Access Security Broker (CASB) API for discovering, investigating, and
@@ -65,20 +56,17 @@ apis:
     humanUrl: https://learn.microsoft.com/en-us/defender-cloud-apps/
     baseUrl: https://portal.cloudappsecurity.com/api
     tags:
-      - Cloud Security
       - CASB
-      - Shadow IT
+      - Cloud Security
       - Data Protection
+      - Shadow IT
     properties:
       - type: Documentation
-        url: 
-          https://learn.microsoft.com/en-us/defender-cloud-apps/api-introduction
+        url: https://learn.microsoft.com/en-us/defender-cloud-apps/api-introduction
       - type: Authentication
-        url: 
-          https://learn.microsoft.com/en-us/defender-cloud-apps/api-authentication
+        url: https://learn.microsoft.com/en-us/defender-cloud-apps/api-authentication
       - type: Activities API
-        url: 
-          https://learn.microsoft.com/en-us/defender-cloud-apps/api-activities
+        url: https://learn.microsoft.com/en-us/defender-cloud-apps/api-activities
       - type: Alerts API
         url: https://learn.microsoft.com/en-us/defender-cloud-apps/api-alerts
       - type: Entities API
@@ -93,17 +81,15 @@ apis:
     humanUrl: https://learn.microsoft.com/en-us/defender/threat-intelligence/
     baseUrl: https://graph.microsoft.com/v1.0/security/threatIntelligence
     tags:
-      - Threat Intelligence
       - IOC
-      - Threat Analytics
       - Security Intelligence
+      - Threat Analytics
+      - Threat Intelligence
     properties:
       - type: Documentation
-        url: 
-          https://learn.microsoft.com/en-us/graph/api/resources/security-threatintelligence-overview
+        url: https://learn.microsoft.com/en-us/graph/api/resources/security-threatintelligence-overview
       - type: API Reference
-        url: 
-          https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
+        url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
       - type: Authentication
         url: https://learn.microsoft.com/en-us/graph/auth/
   - name: Microsoft Graph Security API
@@ -114,50 +100,42 @@ apis:
     humanUrl: https://learn.microsoft.com/en-us/graph/security-concept-overview
     baseUrl: https://graph.microsoft.com/v1.0/security
     tags:
-      - Security Graph
       - Alerts
       - Secure Score
+      - Security Graph
       - Threat Protection
     properties:
       - type: Documentation
-        url: 
-          https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
+        url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
       - type: OpenAPI
         url: https://developer.microsoft.com/en-us/graph/graph-explorer
       - type: SDKs
         url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
       - type: Code Samples
-        url: 
-          https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
+        url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
   - name: Microsoft Defender for Office 365 API
     description: >-
       API for email and collaboration protection including anti-phishing, anti-malware,
       and safe attachments.
     image: https://www.microsoft.com/favicon.ico
-    humanUrl: 
-      https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/
+    humanUrl: https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/
     baseUrl: https://graph.microsoft.com/v1.0/security
     tags:
+      - Collaboration Security
       - Email Security
       - Phishing Protection
-      - Collaboration Security
       - Safe Attachments
     properties:
       - type: Documentation
-        url: 
-          https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/defender-for-office-365
+        url: https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/defender-for-office-365
       - type: Threat Protection
-        url: 
-          https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/threat-explorer
+        url: https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/threat-explorer
       - type: Safe Links
-        url: 
-          https://learn.microsoft.com/en-us/defender-office-365/safe-links-about
+        url: https://learn.microsoft.com/en-us/defender-office-365/safe-links-about
       - type: Safe Attachments
-        url: 
-          https://learn.microsoft.com/en-us/defender-office-365/safe-attachments-about
+        url: https://learn.microsoft.com/en-us/defender-office-365/safe-attachments-about
       - type: Service Description
-        url: 
-          https://learn.microsoft.com/en-us/office365/servicedescriptions/office-365-advanced-threat-protection-service-description
+        url: https://learn.microsoft.com/en-us/office365/servicedescriptions/office-365-advanced-threat-protection-service-description
   - name: Microsoft Defender XDR API
     description: >-
       Unified extended detection and response API for automating workflows based on
@@ -166,11 +144,11 @@ apis:
     humanUrl: https://learn.microsoft.com/en-us/defender-xdr/api-overview
     baseUrl: https://api.security.microsoft.com/api
     tags:
-      - XDR
-      - Incidents
       - Advanced Hunting
       - Event Streaming
+      - Incidents
       - Threat Protection
+      - XDR
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/defender-xdr/api-overview
@@ -185,8 +163,7 @@ apis:
       - type: Streaming API
         url: https://learn.microsoft.com/en-us/defender-xdr/streaming-api
       - type: Supported Event Types
-        url: 
-          https://learn.microsoft.com/en-us/defender-xdr/supported-event-types
+        url: https://learn.microsoft.com/en-us/defender-xdr/supported-event-types
       - type: Error Codes
         url: https://learn.microsoft.com/en-us/defender-xdr/api-error-codes
   - name: Microsoft Defender for Cloud REST API
@@ -194,27 +171,23 @@ apis:
       REST API for unified security management and advanced threat protection across
       hybrid cloud workloads in Azure, other clouds, and on-premises.
     image: https://www.microsoft.com/favicon.ico
-    humanUrl: 
-      https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction
+    humanUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction
     baseUrl: https://management.azure.com
     tags:
-      - Cloud Security
       - Azure Security
+      - Cloud Security
+      - CSPM
       - Security Posture
       - Workload Protection
-      - CSPM
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/rest/api/defenderforcloud/
       - type: Getting Started
-        url: 
-          https://learn.microsoft.com/en-us/azure/defender-for-cloud/get-started
+        url: https://learn.microsoft.com/en-us/azure/defender-for-cloud/get-started
       - type: Pricing
-        url: 
-          https://azure.microsoft.com/en-us/pricing/details/defender-for-cloud/
+        url: https://azure.microsoft.com/en-us/pricing/details/defender-for-cloud/
       - type: Release Notes
-        url: 
-          https://learn.microsoft.com/en-us/azure/defender-for-cloud/release-notes
+        url: https://learn.microsoft.com/en-us/azure/defender-for-cloud/release-notes
   - name: Microsoft Defender for Identity API
     description: >-
       API for identity-based attack detection and investigation across on-premises
@@ -224,8 +197,8 @@ apis:
     humanUrl: https://learn.microsoft.com/en-us/defender-for-identity/
     baseUrl: https://graph.microsoft.com/v1.0/security/identities
     tags:
-      - Identity Security
       - Active Directory
+      - Identity Security
       - Identity Threat Detection
       - Sensor Management
     properties:
@@ -234,11 +207,9 @@ apis:
       - type: Overview
         url: https://learn.microsoft.com/en-us/defender-for-identity/what-is
       - type: Architecture
-        url: 
-          https://learn.microsoft.com/en-us/defender-for-identity/architecture
+        url: https://learn.microsoft.com/en-us/defender-for-identity/architecture
       - type: Graph Security API
-        url: 
-          https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
+        url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
