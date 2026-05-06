@@ -4,154 +4,371 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Defender
 providerId: microsoft-defender
 created: '2026-05-04'
-modified: '2026-05-04'
-tags: []
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - Security
+  - Endpoint Protection
+  - XDR
+  - Cloud Security
+  - Identity Protection
+  - Microsoft
+description: Microsoft Defender is a portfolio of security products with two distinct pricing
+  models. Endpoint / XDR / Identity products (Defender for Endpoint Plan 1/2, Defender for
+  Identity, Defender for Office 365, Defender for Cloud Apps, Defender XDR) are licensed
+  per-user-per-month, often bundled into Microsoft 365 E5 / E5 Security / E5 Mobility +
+  Security. Defender for Cloud (CSPM/CWP) is consumption-priced per resource per hour with
+  Plan 1 (CSPM) free tier and Plan 2 (Defender Plans) per-resource hourly meters. Defender
+  for Business (SMB SKU) is $3/user/month or bundled with M365 Business Premium.
+sources:
+  - https://www.microsoft.com/security/business/microsoft-defender
+  - https://azure.microsoft.com/pricing/details/defender-for-cloud/
+  - https://learn.microsoft.com/en-us/defender-for-cloud/concept-cloud-security-posture-management
+  - https://learn.microsoft.com/en-us/defender-business/
 plans:
-  - id: microsoft-defender-free
-    name: Free
+  - id: microsoft-defender-for-endpoint-p1
+    name: Defender for Endpoint Plan 1
+    type: subscription
+    description: Core endpoint security — next-gen AV, attack surface reduction, application
+      control, web/network protection, manual response.
+    entries:
+      - label: Per user per month
+        name: mde_p1_seat
+        type: subscription
+        metric: user-month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$3.00 per user per month'
+        userMultiplied: true
+    elements:
+      - name: Next-gen antimalware
+      - name: Attack surface reduction
+      - name: Centralized management
+  - id: microsoft-defender-for-endpoint-p2
+    name: Defender for Endpoint Plan 2
+    type: subscription
+    description: Adds EDR, threat & vulnerability management, automated investigation,
+      Microsoft Threat Experts, sandbox, and advanced hunting.
+    entries:
+      - label: Per user per month
+        name: mde_p2_seat
+        type: subscription
+        metric: user-month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$5.20 per user per month'
+        userMultiplied: true
+    elements:
+      - name: EDR with behavioral detection
+      - name: Threat & vulnerability management
+      - name: Automated investigation & response
+      - name: Microsoft Threat Experts
+  - id: microsoft-defender-for-business
+    name: Defender for Business (SMB)
+    type: subscription
+    description: SMB-targeted endpoint protection (≤300 users). Standalone or included with
+      M365 Business Premium.
+    entries:
+      - label: Per user per month
+        name: mdb_seat
+        type: subscription
+        metric: user-month
+        limit: 300
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$3.00 per user per month'
+        userMultiplied: true
+    elements:
+      - name: SMB-grade endpoint security
+      - name: Up to 300 users
+      - name: Bundled in M365 Business Premium
+  - id: microsoft-defender-for-office-365-p1
+    name: Defender for Office 365 Plan 1
+    type: subscription
+    description: Email security — Safe Attachments, Safe Links, anti-phishing.
+    entries:
+      - label: Per user per month
+        name: mdo_p1_seat
+        type: subscription
+        metric: user-month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$2.00 per user per month'
+        userMultiplied: true
+    elements:
+      - name: Safe Attachments
+      - name: Safe Links
+      - name: Anti-phishing
+  - id: microsoft-defender-for-office-365-p2
+    name: Defender for Office 365 Plan 2
+    type: subscription
+    description: Adds Threat Explorer, Threat Trackers, Attack Simulator, and automated
+      investigation/response for email.
+    entries:
+      - label: Per user per month
+        name: mdo_p2_seat
+        type: subscription
+        metric: user-month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$5.00 per user per month'
+        userMultiplied: true
+    elements:
+      - name: Threat Explorer & hunting
+      - name: Attack Simulator
+      - name: Automated investigation & response
+  - id: microsoft-defender-for-identity
+    name: Defender for Identity
+    type: subscription
+    description: On-premises Active Directory threat detection.
+    entries:
+      - label: Per user per month
+        name: mdi_seat
+        type: subscription
+        metric: user-month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$5.50 per user per month'
+        userMultiplied: true
+    elements:
+      - name: AD threat detection
+      - name: Lateral movement path analytics
+  - id: microsoft-defender-for-cloud-apps
+    name: Defender for Cloud Apps (CASB)
+    type: subscription
+    description: Cloud Access Security Broker; SaaS app discovery and governance.
+    entries:
+      - label: Per user per month
+        name: mdca_seat
+        type: subscription
+        metric: user-month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$3.50 per user per month'
+        userMultiplied: true
+    elements:
+      - name: SaaS app discovery
+      - name: Conditional access app control
+      - name: Information protection
+  - id: microsoft-defender-for-cloud-cspm-free
+    name: Defender for Cloud — Foundational CSPM (Free)
     type: freemium
-    description: Free entry tier for the Microsoft Defender API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Free baseline cloud security posture management for Azure subscriptions.
+      Includes secure-score, recommendations, and asset inventory.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
+      - label: Free CSPM
+        name: cspm_free
         type: quota
-        metric: requests
-        limit: 1000
+        metric: subscription
+        limit: -1
         timeFrame: month
         geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
         unit: 1
         price: '0.00'
         userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Microsoft Defender for Endpoint API
-      - name: Microsoft Defender for Cloud Apps API
-      - name: Microsoft Defender Threat Intelligence API
-      - name: Microsoft Graph Security API
-      - name: Microsoft Defender for Office 365 API
-      - name: Microsoft Defender XDR API
-      - name: Microsoft Defender for Cloud REST API
-      - name: Microsoft Defender for Identity API
-  - id: microsoft-defender-pro
-    name: Professional
-    type: paid
-    description: Production tier for Microsoft Defender. Provides higher quotas, priority support, and
-      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: Secure score
+      - name: Asset inventory
+      - name: Compliance dashboard (limited)
+  - id: microsoft-defender-for-cloud-cspm-defender
+    name: Defender for Cloud — Defender CSPM (Plan 2)
+    type: usage-based
+    description: Premium CSPM with attack-path analysis, agentless vulnerability scanning,
+      data-aware security posture, governance, regulatory compliance.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+      - label: Per billable resource per month
+        name: defender_cspm_resource
         type: metered
-        metric: requests
+        metric: resource-month
         limit: -1
         timeFrame: month
         geo: global
-        domains: []
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: '$5 per billable resource per month (e.g., VM, DB, container registry)'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Microsoft Defender for Endpoint API
-      - name: Microsoft Defender for Cloud Apps API
-      - name: Microsoft Defender Threat Intelligence API
-      - name: Microsoft Graph Security API
-      - name: Microsoft Defender for Office 365 API
-      - name: Microsoft Defender XDR API
-      - name: Microsoft Defender for Cloud REST API
-      - name: Microsoft Defender for Identity API
-  - id: microsoft-defender-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Microsoft Defender. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
+      - name: Attack path analysis
+      - name: Agentless scanning
+      - name: Cloud security graph
+  - id: microsoft-defender-for-servers-p1
+    name: Defender for Servers Plan 1
+    type: usage-based
+    description: Server endpoint protection on Azure / AWS / GCP / on-prem (via Arc).
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Per server per hour
+        name: defender_servers_p1
+        type: metered
+        metric: server-hour
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0.0103 per server per hour (~$5/server/month)'
+        userMultiplied: false
+    elements:
+      - name: Microsoft Defender for Endpoint included
+      - name: License flexibility (server-by-server)
+  - id: microsoft-defender-for-servers-p2
+    name: Defender for Servers Plan 2
+    type: usage-based
+    description: Adds vulnerability assessment (Qualys/Defender VM), file integrity
+      monitoring, just-in-time VM access, adaptive application controls, network hardening.
+    entries:
+      - label: Per server per hour
+        name: defender_servers_p2
+        type: metered
+        metric: server-hour
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0.0205 per server per hour (~$15/server/month)'
+        userMultiplied: false
+    elements:
+      - name: Vulnerability assessment
+      - name: File integrity monitoring
+      - name: Just-in-time VM access
+      - name: Adaptive app controls
+  - id: microsoft-defender-for-storage
+    name: Defender for Storage
+    type: usage-based
+    description: Threat detection on Azure Storage (malware scanning, anomalous access).
+    entries:
+      - label: Per storage account per month
+        name: defender_storage_account
+        type: metered
+        metric: account-month
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains: []
+        geo: global
         unit: 1
-        price: custom
+        price: '$10 per storage account per month + $0.15 per 1K transactions; $0.15 per GB
+          malware-scanned (first 5K transactions/month free)'
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
+    elements:
+      - name: Malware scanning on upload
+      - name: Anomaly detection
+  - id: microsoft-defender-for-databases
+    name: Defender for Databases
+    type: usage-based
+    description: SQL / Cosmos DB / Open-source DBs threat protection.
+    entries:
+      - label: Defender for Azure SQL — per server per hour
+        name: defender_sql_server
+        type: metered
+        metric: server-hour
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0.02 per vCore per hour (Azure SQL DB / MI / VMs)'
+        userMultiplied: false
+      - label: Defender for Cosmos DB
+        name: defender_cosmos
+        type: metered
+        metric: 100-RU-hour
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0.0095 per 100 RU/s per hour'
+        userMultiplied: false
+    elements:
+      - name: SQL injection detection
+      - name: Anomaly detection
+  - id: microsoft-defender-for-containers
+    name: Defender for Containers
+    type: usage-based
+    description: Kubernetes / container security across AKS, EKS, GKE, on-prem.
+    entries:
+      - label: Per vCore per hour
+        name: defender_containers_vcore
+        type: metered
+        metric: vcore-hour
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0.0095 per vCore per hour (~$7/vCore/month)'
+        userMultiplied: false
+    elements:
+      - name: Image vulnerability scanning
+      - name: Runtime threat detection
+      - name: Kubernetes hardening
+  - id: microsoft-defender-xdr
+    name: Microsoft Defender XDR (formerly Microsoft 365 Defender)
+    type: subscription
+    description: Unified XDR portal — included at no extra cost when you license any of the
+      underlying Defender E5 components.
+    entries:
+      - label: Bundled with constituent SKUs
+        name: defender_xdr_bundled
+        type: subscription
+        metric: user-month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included with E5 / E5 Security or constituent Defender SKUs
+        userMultiplied: true
+    elements:
+      - name: Cross-domain correlation
+      - name: Unified incidents
+      - name: Advanced hunting
+  - id: microsoft-defender-bundles
+    name: M365 E5 Security Bundle
+    type: subscription
+    description: Microsoft 365 E5 Security add-on bundles Defender for Endpoint P2, Defender
+      for Identity, Defender for Office 365 P2, and Defender for Cloud Apps.
+    entries:
+      - label: Per user per month
+        name: e5_security_bundle
+        type: subscription
+        metric: user-month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$12.00 per user per month'
+        userMultiplied: true
+    elements:
+      - name: Defender for Endpoint P2
+      - name: Defender for Identity
+      - name: Defender for Office 365 P2
+      - name: Defender for Cloud Apps
+  - id: microsoft-defender-enterprise
+    name: Enterprise Agreement / Volume Licensing
+    type: enterprise
+    description: Negotiated rates via EA / MCA / CSP. Often bundled with M365 E5 ELA.
+    entries:
+      - label: Negotiated rate
+        name: ea_negotiated
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: month
+        geo: global
         unit: 1
         price: custom
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Microsoft Defender for Endpoint API
-      - name: Microsoft Defender for Cloud Apps API
-      - name: Microsoft Defender Threat Intelligence API
-      - name: Microsoft Graph Security API
-      - name: Microsoft Defender for Office 365 API
-      - name: Microsoft Defender XDR API
-      - name: Microsoft Defender for Cloud REST API
-      - name: Microsoft Defender for Identity API
+      - name: Volume discount
+      - name: M365 E5 ELA bundling
+      - name: Dedicated technical account management
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+    url: https://www.microsoft.com/security/business/microsoft-defender

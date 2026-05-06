@@ -4,116 +4,90 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Defender
 providerId: microsoft-defender
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
+  - Security
+  - Endpoint
+  - XDR
+  - Cloud Security
+  - Microsoft
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Microsoft Defender API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
+description: Microsoft Defender rate limits depend on the API surface. The Microsoft Defender
+  for Endpoint REST API (api.securitycenter.microsoft.com / api.security.microsoft.com) caps
+  most endpoints at 100 calls per minute and 1,500 calls per hour per tenant per app, with
+  some endpoints (advanced hunting, indicators) at lower limits. Defender for Cloud
+  configuration goes through Azure Resource Manager (ARM) and uses the standard ARM
+  token-bucket throttling. Microsoft Graph Security API calls are governed by Microsoft
+  Graph throttling. All surfaces use HTTP 429 with Retry-After.
+sources:
+  - https://learn.microsoft.com/en-us/defender-endpoint/api/api-explorer
+  - https://learn.microsoft.com/en-us/defender-endpoint/api/run-advanced-query-api
+  - https://learn.microsoft.com/en-us/graph/throttling
+  - https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/request-limits-and-throttling
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
   retryAfter: Retry-After
-  policy: RateLimit-Policy
+  remainingCalls: X-RateLimit-Remaining
+  rateLimitLimit: X-RateLimit-Limit
+  rateLimitReset: X-RateLimit-Reset
+  ocpRequestId: ocp-aad-diagnostics-server-name
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
+  forbidden: 403
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Microsoft Defender for Endpoint API
-      - Microsoft Defender for Cloud Apps API
-      - Microsoft Defender Threat Intelligence API
-      - Microsoft Graph Security API
-      - Microsoft Defender for Office 365 API
-      - Microsoft Defender XDR API
-      - Microsoft Defender for Cloud REST API
-      - Microsoft Defender for Identity API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Microsoft Defender for Endpoint API
-      - Microsoft Defender for Cloud Apps API
-      - Microsoft Defender Threat Intelligence API
-      - Microsoft Graph Security API
-      - Microsoft Defender for Office 365 API
-      - Microsoft Defender XDR API
-      - Microsoft Defender for Cloud REST API
-      - Microsoft Defender for Identity API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
+  - name: Defender for Endpoint API — general
+    scope: tenant/app
     metric: requests_per_minute
     limit: 100
-    burst: 200
     timeFrame: minute
-    applies:
-      - Microsoft Defender for Endpoint API
-      - Microsoft Defender for Cloud Apps API
-      - Microsoft Defender Threat Intelligence API
-      - Microsoft Graph Security API
-      - Microsoft Defender for Office 365 API
-      - Microsoft Defender XDR API
-      - Microsoft Defender for Cloud REST API
-      - Microsoft Defender for Identity API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Microsoft Defender for Endpoint API
-      - Microsoft Defender for Cloud Apps API
-      - Microsoft Defender Threat Intelligence API
-      - Microsoft Graph Security API
-      - Microsoft Defender for Office 365 API
-      - Microsoft Defender XDR API
-      - Microsoft Defender for Cloud REST API
-      - Microsoft Defender for Identity API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
+    notes: 100 calls per minute and 1,500 calls per hour per tenant per app for most endpoints.
+  - name: Defender for Endpoint API — hourly cap
+    scope: tenant/app
+    metric: requests_per_hour
+    limit: 1500
+    timeFrame: hour
+    notes: 1,500 calls per hour per tenant per app.
+  - name: Advanced Hunting API
+    scope: tenant
+    metric: queries_per_minute
+    limit: 45
     timeFrame: minute
-    applies:
-      - Microsoft Defender for Endpoint API
-      - Microsoft Defender for Cloud Apps API
-      - Microsoft Defender Threat Intelligence API
-      - Microsoft Graph Security API
-      - Microsoft Defender for Office 365 API
-      - Microsoft Defender XDR API
-      - Microsoft Defender for Cloud REST API
-      - Microsoft Defender for Identity API
+    notes: 45 advanced-hunting queries per minute per tenant; 1,500 per hour. Each query has a
+      10-second runtime cap and 10,000-row result cap.
+  - name: Indicators API
+    scope: tenant
+    metric: indicators_per_tenant
+    limit: 15000
+    notes: Maximum 15,000 file/IP/URL indicators per tenant.
+  - name: Microsoft Graph Security
+    scope: app/tenant
+    metric: requests_per_10s
+    limit: see vendor docs
+    notes: Standard Microsoft Graph throttling; many endpoints share the per-app per-tenant
+      130k/10s envelope.
+  - name: Defender for Cloud configuration (ARM)
+    scope: subscription/region
+    metric: requests_per_second
+    limit: 25
+    timeFrame: second
+    notes: Standard ARM read bucket; writes share ARM write bucket of 10/sec.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Honor Retry-After
+    description: 429 responses include Retry-After. Implement exponential backoff with jitter.
+  - name: Use $batch for Microsoft Graph
+    description: Batch up to 20 Graph requests with a single HTTP call to reduce the per-app
+      throttling pressure.
+  - name: Page advanced hunting
+    description: Advanced Hunting caps result rows at 10,000 — paginate via timestamps for large
+      time ranges.
+  - name: App registration scope
+    description: Each app registration has its own per-tenant quota; spread automation across
+      multiple apps if you need more headroom.
+  - name: No support raise
+    description: Per-app quotas are typically not raised by support. Use Microsoft Graph
+      Security streaming API (event hubs / log analytics) for high-volume telemetry.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+    url: https://www.microsoft.com/security/business/microsoft-defender
