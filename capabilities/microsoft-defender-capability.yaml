@@ -1,0 +1,544 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Defender for Endpoint API
+  description: API for endpoint detection and response, threat and vulnerability management, and automated investigation and
+    remediation. Provides programmatic access to alerts, machines, and vulnerabilities managed by Microsoft Defender for Endpoint.
+  tags:
+  - Microsoft
+  - Defender
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-defender
+    baseUri: https://api.security.microsoft.com/api
+    description: Microsoft Defender for Endpoint API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{MICROSOFT_DEFENDER_TOKEN}}'
+    resources:
+    - name: alerts
+      path: /alerts
+      operations:
+      - name: listalerts
+        method: GET
+        description: Microsoft Defender List alerts
+        inputParameters:
+        - name: $filter
+          in: query
+          type: string
+          description: OData filter expression. Filterable properties include alertCreationTime, lastUpdateTime, incidentId,
+            investigationId, id, assignedTo, detectionSource, lastEven
+        - name: $top
+          in: query
+          type: integer
+          description: Maximum number of results to return (max 10,000).
+        - name: $skip
+          in: query
+          type: integer
+          description: Number of results to skip for pagination.
+        - name: $expand
+          in: query
+          type: string
+          description: Expand related entities. Supports expanding evidence.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: alerts-alertid
+      path: /alerts/{alertId}
+      operations:
+      - name: getalert
+        method: GET
+        description: Microsoft Defender Get alert by ID
+        inputParameters:
+        - name: alertId
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the alert.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatealert
+        method: PATCH
+        description: Microsoft Defender Update alert
+        inputParameters:
+        - name: alertId
+          in: path
+          type: string
+          required: true
+          description: The unique identifier of the alert to update.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: machines
+      path: /machines
+      operations:
+      - name: listmachines
+        method: GET
+        description: Microsoft Defender List machines
+        inputParameters:
+        - name: $filter
+          in: query
+          type: string
+          description: OData filter expression. Filterable properties include computerDnsName, id, version, deviceValue, aadDeviceId,
+            machineTags, lastSeen, exposureLevel, onboardingS
+        - name: $top
+          in: query
+          type: integer
+          description: Maximum number of results to return (max 10,000).
+        - name: $skip
+          in: query
+          type: integer
+          description: Number of results to skip for pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: machines-machineid
+      path: /machines/{machineId}
+      operations:
+      - name: getmachine
+        method: GET
+        description: Microsoft Defender Get machine by ID
+        inputParameters:
+        - name: machineId
+          in: path
+          type: string
+          required: true
+          description: The device ID or computer name of the machine.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: machines-machineid-alerts
+      path: /machines/{machineId}/alerts
+      operations:
+      - name: listmachinealerts
+        method: GET
+        description: Microsoft Defender List alerts for a machine
+        inputParameters:
+        - name: machineId
+          in: path
+          type: string
+          required: true
+          description: The device ID of the machine.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: machines-machineid-vulnerabilities
+      path: /machines/{machineId}/vulnerabilities
+      operations:
+      - name: listmachinevulnerabilities
+        method: GET
+        description: Microsoft Defender List vulnerabilities for a machine
+        inputParameters:
+        - name: machineId
+          in: path
+          type: string
+          required: true
+          description: The device ID of the machine.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: vulnerabilities
+      path: /vulnerabilities
+      operations:
+      - name: listvulnerabilities
+        method: GET
+        description: Microsoft Defender List all vulnerabilities
+        inputParameters:
+        - name: $filter
+          in: query
+          type: string
+          description: OData filter expression. Filterable properties include id, name, description, cvssV3, publishedOn,
+            severity, and updatedOn.
+        - name: $top
+          in: query
+          type: integer
+          description: Maximum number of results to return (max 8,000).
+        - name: $skip
+          in: query
+          type: integer
+          description: Number of results to skip for pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: vulnerabilities-vulnerabilityid
+      path: /vulnerabilities/{vulnerabilityId}
+      operations:
+      - name: getvulnerability
+        method: GET
+        description: Microsoft Defender Get vulnerability by ID
+        inputParameters:
+        - name: vulnerabilityId
+          in: path
+          type: string
+          required: true
+          description: The CVE identifier of the vulnerability.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: vulnerabilities-vulnerabilityid-machinereference
+      path: /vulnerabilities/{vulnerabilityId}/machineReferences
+      operations:
+      - name: listvulnerabilitymachinereferences
+        method: GET
+        description: Microsoft Defender List machines affected by a vulnerability
+        inputParameters:
+        - name: vulnerabilityId
+          in: path
+          type: string
+          required: true
+          description: The CVE identifier of the vulnerability.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: microsoft-defender-rest
+    description: REST adapter for Microsoft Defender for Endpoint API.
+    resources:
+    - path: /alerts
+      name: listalerts
+      operations:
+      - method: GET
+        name: listalerts
+        description: Microsoft Defender List alerts
+        call: microsoft-defender.listalerts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerts/{alertId}
+      name: getalert
+      operations:
+      - method: GET
+        name: getalert
+        description: Microsoft Defender Get alert by ID
+        call: microsoft-defender.getalert
+        with:
+          alertId: rest.alertId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /alerts/{alertId}
+      name: updatealert
+      operations:
+      - method: PATCH
+        name: updatealert
+        description: Microsoft Defender Update alert
+        call: microsoft-defender.updatealert
+        with:
+          alertId: rest.alertId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /machines
+      name: listmachines
+      operations:
+      - method: GET
+        name: listmachines
+        description: Microsoft Defender List machines
+        call: microsoft-defender.listmachines
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /machines/{machineId}
+      name: getmachine
+      operations:
+      - method: GET
+        name: getmachine
+        description: Microsoft Defender Get machine by ID
+        call: microsoft-defender.getmachine
+        with:
+          machineId: rest.machineId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /machines/{machineId}/alerts
+      name: listmachinealerts
+      operations:
+      - method: GET
+        name: listmachinealerts
+        description: Microsoft Defender List alerts for a machine
+        call: microsoft-defender.listmachinealerts
+        with:
+          machineId: rest.machineId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /machines/{machineId}/vulnerabilities
+      name: listmachinevulnerabilities
+      operations:
+      - method: GET
+        name: listmachinevulnerabilities
+        description: Microsoft Defender List vulnerabilities for a machine
+        call: microsoft-defender.listmachinevulnerabilities
+        with:
+          machineId: rest.machineId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /vulnerabilities
+      name: listvulnerabilities
+      operations:
+      - method: GET
+        name: listvulnerabilities
+        description: Microsoft Defender List all vulnerabilities
+        call: microsoft-defender.listvulnerabilities
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /vulnerabilities/{vulnerabilityId}
+      name: getvulnerability
+      operations:
+      - method: GET
+        name: getvulnerability
+        description: Microsoft Defender Get vulnerability by ID
+        call: microsoft-defender.getvulnerability
+        with:
+          vulnerabilityId: rest.vulnerabilityId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /vulnerabilities/{vulnerabilityId}/machineReferences
+      name: listvulnerabilitymachinereferences
+      operations:
+      - method: GET
+        name: listvulnerabilitymachinereferences
+        description: Microsoft Defender List machines affected by a vulnerability
+        call: microsoft-defender.listvulnerabilitymachinereferences
+        with:
+          vulnerabilityId: rest.vulnerabilityId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: microsoft-defender-mcp
+    transport: http
+    description: MCP adapter for Microsoft Defender for Endpoint API for AI agent use.
+    tools:
+    - name: listalerts
+      description: Microsoft Defender List alerts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-defender.listalerts
+      with:
+        $filter: tools.$filter
+        $top: tools.$top
+        $skip: tools.$skip
+        $expand: tools.$expand
+      inputParameters:
+      - name: $filter
+        type: string
+        description: OData filter expression. Filterable properties include alertCreationTime, lastUpdateTime, incidentId,
+          investigationId, id, assignedTo, detectionSource, lastEven
+      - name: $top
+        type: integer
+        description: Maximum number of results to return (max 10,000).
+      - name: $skip
+        type: integer
+        description: Number of results to skip for pagination.
+      - name: $expand
+        type: string
+        description: Expand related entities. Supports expanding evidence.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getalert
+      description: Microsoft Defender Get alert by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-defender.getalert
+      with:
+        alertId: tools.alertId
+      inputParameters:
+      - name: alertId
+        type: string
+        description: The unique identifier of the alert.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatealert
+      description: Microsoft Defender Update alert
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-defender.updatealert
+      with:
+        alertId: tools.alertId
+      inputParameters:
+      - name: alertId
+        type: string
+        description: The unique identifier of the alert to update.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmachines
+      description: Microsoft Defender List machines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-defender.listmachines
+      with:
+        $filter: tools.$filter
+        $top: tools.$top
+        $skip: tools.$skip
+      inputParameters:
+      - name: $filter
+        type: string
+        description: OData filter expression. Filterable properties include computerDnsName, id, version, deviceValue, aadDeviceId,
+          machineTags, lastSeen, exposureLevel, onboardingS
+      - name: $top
+        type: integer
+        description: Maximum number of results to return (max 10,000).
+      - name: $skip
+        type: integer
+        description: Number of results to skip for pagination.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmachine
+      description: Microsoft Defender Get machine by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-defender.getmachine
+      with:
+        machineId: tools.machineId
+      inputParameters:
+      - name: machineId
+        type: string
+        description: The device ID or computer name of the machine.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmachinealerts
+      description: Microsoft Defender List alerts for a machine
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-defender.listmachinealerts
+      with:
+        machineId: tools.machineId
+      inputParameters:
+      - name: machineId
+        type: string
+        description: The device ID of the machine.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmachinevulnerabilities
+      description: Microsoft Defender List vulnerabilities for a machine
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-defender.listmachinevulnerabilities
+      with:
+        machineId: tools.machineId
+      inputParameters:
+      - name: machineId
+        type: string
+        description: The device ID of the machine.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listvulnerabilities
+      description: Microsoft Defender List all vulnerabilities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-defender.listvulnerabilities
+      with:
+        $filter: tools.$filter
+        $top: tools.$top
+        $skip: tools.$skip
+      inputParameters:
+      - name: $filter
+        type: string
+        description: OData filter expression. Filterable properties include id, name, description, cvssV3, publishedOn, severity,
+          and updatedOn.
+      - name: $top
+        type: integer
+        description: Maximum number of results to return (max 8,000).
+      - name: $skip
+        type: integer
+        description: Number of results to skip for pagination.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getvulnerability
+      description: Microsoft Defender Get vulnerability by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-defender.getvulnerability
+      with:
+        vulnerabilityId: tools.vulnerabilityId
+      inputParameters:
+      - name: vulnerabilityId
+        type: string
+        description: The CVE identifier of the vulnerability.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listvulnerabilitymachinereferences
+      description: Microsoft Defender List machines affected by a vulnerability
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-defender.listvulnerabilitymachinereferences
+      with:
+        vulnerabilityId: tools.vulnerabilityId
+      inputParameters:
+      - name: vulnerabilityId
+        type: string
+        description: The CVE identifier of the vulnerability.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_DEFENDER_TOKEN: MICROSOFT_DEFENDER_TOKEN
