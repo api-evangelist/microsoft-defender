@@ -33,9 +33,9 @@ apis:
         url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp
       - type: Pricing
         url: https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
-      - type: API Reference
+      - type: APIReference
         url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-list
-      - type: Release Notes
+      - type: ReleaseNotes
         url: https://learn.microsoft.com/en-us/defender-endpoint/api/api-release-notes
       - type: Management APIs
         url: https://learn.microsoft.com/en-us/defender-endpoint/api/management-apis
@@ -88,7 +88,7 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/graph/api/resources/security-threatintelligence-overview
-      - type: API Reference
+      - type: APIReference
         url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
       - type: Authentication
         url: https://learn.microsoft.com/en-us/graph/auth/
@@ -152,7 +152,7 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/defender-xdr/api-overview
-      - type: API Reference
+      - type: APIReference
         url: https://learn.microsoft.com/en-us/defender-xdr/api-supported
       - type: Authentication
         url: https://learn.microsoft.com/en-us/defender-xdr/api-access
@@ -164,7 +164,7 @@ apis:
         url: https://learn.microsoft.com/en-us/defender-xdr/streaming-api
       - type: Supported Event Types
         url: https://learn.microsoft.com/en-us/defender-xdr/supported-event-types
-      - type: Error Codes
+      - type: ErrorCodes
         url: https://learn.microsoft.com/en-us/defender-xdr/api-error-codes
   - name: Microsoft Defender for Cloud REST API
     description: >-
@@ -182,11 +182,11 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/rest/api/defenderforcloud/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/azure/defender-for-cloud/get-started
       - type: Pricing
         url: https://azure.microsoft.com/en-us/pricing/details/defender-for-cloud/
-      - type: Release Notes
+      - type: ReleaseNotes
         url: https://learn.microsoft.com/en-us/azure/defender-for-cloud/release-notes
   - name: Microsoft Defender for Identity API
     description: >-
@@ -218,11 +218,11 @@ common:
     url: https://security.microsoft.com
   - type: Documentation Hub
     url: https://learn.microsoft.com/en-us/microsoft-365/security/
-  - type: Status Page
+  - type: StatusPage
     url: https://status.azure.com/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.microsoft.com/en-us/legal/terms-of-use
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://privacy.microsoft.com/en-us/privacystatement
   - type: Developer Changelog
     url: https://developer.microsoft.com/en-us/changelog
