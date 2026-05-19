@@ -1,0 +1,224 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Defender for Endpoint API — Alerts
+  description: 'Microsoft Defender for Endpoint API — Alerts. 4 operations. Lead operation: Microsoft Defender List alerts.
+    Self-contained Naftiko capability covering one Microsoft Defender business surface.'
+  tags:
+  - Microsoft Defender
+  - Alerts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_DEFENDER_API_KEY: MICROSOFT_DEFENDER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: for-endpoint-alerts
+    baseUri: https://api.security.microsoft.com/api
+    description: Microsoft Defender for Endpoint API — Alerts business capability. Self-contained, no shared references.
+    resources:
+    - name: alerts
+      path: /alerts
+      operations:
+      - name: listalerts
+        method: GET
+        description: Microsoft Defender List alerts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $filter
+          in: query
+          type: string
+          description: OData filter expression. Filterable properties include alertCreationTime, lastUpdateTime, incidentId,
+            investigationId, id, assignedTo, detectionSource, lastEven
+        - name: $top
+          in: query
+          type: integer
+          description: Maximum number of results to return (max 10,000).
+        - name: $skip
+          in: query
+          type: integer
+          description: Number of results to skip for pagination.
+        - name: $expand
+          in: query
+          type: string
+          description: Expand related entities. Supports expanding evidence.
+    - name: alerts-alertId
+      path: /alerts/{alertId}
+      operations:
+      - name: getalert
+        method: GET
+        description: Microsoft Defender Get alert by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: alertId
+          in: path
+          type: string
+          description: The unique identifier of the alert.
+          required: true
+      - name: updatealert
+        method: PATCH
+        description: Microsoft Defender Update alert
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: alertId
+          in: path
+          type: string
+          description: The unique identifier of the alert to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: machines-machineId-alerts
+      path: /machines/{machineId}/alerts
+      operations:
+      - name: listmachinealerts
+        method: GET
+        description: Microsoft Defender List alerts for a machine
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: machineId
+          in: path
+          type: string
+          description: The device ID of the machine.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_DEFENDER_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: for-endpoint-alerts-rest
+    port: 8080
+    description: REST adapter for Microsoft Defender for Endpoint API — Alerts. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/alerts
+      name: alerts
+      description: REST surface for alerts.
+      operations:
+      - method: GET
+        name: listalerts
+        description: Microsoft Defender List alerts
+        call: for-endpoint-alerts.listalerts
+        with:
+          $filter: rest.$filter
+          $top: rest.$top
+          $skip: rest.$skip
+          $expand: rest.$expand
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/alerts/{alertid}
+      name: alerts-alertid
+      description: REST surface for alerts-alertId.
+      operations:
+      - method: GET
+        name: getalert
+        description: Microsoft Defender Get alert by ID
+        call: for-endpoint-alerts.getalert
+        with:
+          alertId: rest.alertId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatealert
+        description: Microsoft Defender Update alert
+        call: for-endpoint-alerts.updatealert
+        with:
+          alertId: rest.alertId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/machines/{machineid}/alerts
+      name: machines-machineid-alerts
+      description: REST surface for machines-machineId-alerts.
+      operations:
+      - method: GET
+        name: listmachinealerts
+        description: Microsoft Defender List alerts for a machine
+        call: for-endpoint-alerts.listmachinealerts
+        with:
+          machineId: rest.machineId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: for-endpoint-alerts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Defender for Endpoint API — Alerts. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: microsoft-defender-list-alerts
+      description: Microsoft Defender List alerts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: for-endpoint-alerts.listalerts
+      with:
+        $filter: tools.$filter
+        $top: tools.$top
+        $skip: tools.$skip
+        $expand: tools.$expand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-defender-get-alert-id
+      description: Microsoft Defender Get alert by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: for-endpoint-alerts.getalert
+      with:
+        alertId: tools.alertId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-defender-update-alert
+      description: Microsoft Defender Update alert
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: for-endpoint-alerts.updatealert
+      with:
+        alertId: tools.alertId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-defender-list-alerts-machine
+      description: Microsoft Defender List alerts for a machine
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: for-endpoint-alerts.listmachinealerts
+      with:
+        machineId: tools.machineId
+      outputParameters:
+      - type: object
+        mapping: $.
