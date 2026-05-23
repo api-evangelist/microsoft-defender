@@ -1,0 +1,159 @@
+{
+  "provider": "Microsoft Defender",
+  "providerId": "microsoft-defender",
+  "kind": "json-structure",
+  "description": "Structural overview of the Microsoft Defender API surface; extracted from openapi/.",
+  "schemaCount": 9,
+  "operationCount": 10,
+  "schemas": [
+    {
+      "name": "Alert",
+      "type": "object",
+      "propertyCount": 29,
+      "required": []
+    },
+    {
+      "name": "AlertComment",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "AlertEvidence",
+      "type": "object",
+      "propertyCount": 25,
+      "required": []
+    },
+    {
+      "name": "AlertUpdate",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "RelatedUser",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Machine",
+      "type": "object",
+      "propertyCount": 21,
+      "required": []
+    },
+    {
+      "name": "IpAddress",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Vulnerability",
+      "type": "object",
+      "propertyCount": 17,
+      "required": []
+    },
+    {
+      "name": "MachineReference",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/alerts",
+      "operationId": "listAlerts",
+      "summary": "Microsoft Defender List alerts",
+      "tags": [
+        "Alerts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/alerts/{alertId}",
+      "operationId": "getAlert",
+      "summary": "Microsoft Defender Get alert by ID",
+      "tags": [
+        "Alerts"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/alerts/{alertId}",
+      "operationId": "updateAlert",
+      "summary": "Microsoft Defender Update alert",
+      "tags": [
+        "Alerts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/machines",
+      "operationId": "listMachines",
+      "summary": "Microsoft Defender List machines",
+      "tags": [
+        "Machines"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/machines/{machineId}",
+      "operationId": "getMachine",
+      "summary": "Microsoft Defender Get machine by ID",
+      "tags": [
+        "Machines"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/machines/{machineId}/alerts",
+      "operationId": "listMachineAlerts",
+      "summary": "Microsoft Defender List alerts for a machine",
+      "tags": [
+        "Alerts",
+        "Machines"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/machines/{machineId}/vulnerabilities",
+      "operationId": "listMachineVulnerabilities",
+      "summary": "Microsoft Defender List vulnerabilities for a machine",
+      "tags": [
+        "Machines",
+        "Vulnerabilities"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vulnerabilities",
+      "operationId": "listVulnerabilities",
+      "summary": "Microsoft Defender List all vulnerabilities",
+      "tags": [
+        "Vulnerabilities"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vulnerabilities/{vulnerabilityId}",
+      "operationId": "getVulnerability",
+      "summary": "Microsoft Defender Get vulnerability by ID",
+      "tags": [
+        "Vulnerabilities"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/vulnerabilities/{vulnerabilityId}/machineReferences",
+      "operationId": "listVulnerabilityMachineReferences",
+      "summary": "Microsoft Defender List machines affected by a vulnerability",
+      "tags": [
+        "Machines",
+        "Vulnerabilities"
+      ]
+    }
+  ]
+}

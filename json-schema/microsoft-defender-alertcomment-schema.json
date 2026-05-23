@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AlertComment",
+  "title": "AlertComment",
+  "type": "object",
+  "description": "A comment associated with an alert.",
+  "properties": {
+    "comment": {
+      "type": "string",
+      "description": "The comment text."
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "The user who created the comment."
+    },
+    "createdTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the comment was created."
+    }
+  }
+}

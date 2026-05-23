@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RelatedUser",
+  "title": "RelatedUser",
+  "type": "object",
+  "description": "Details of a user related to an alert.",
+  "properties": {
+    "userName": {
+      "type": "string",
+      "description": "The user name."
+    },
+    "domainName": {
+      "type": "string",
+      "description": "The domain name."
+    }
+  }
+}

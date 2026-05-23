@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AlertUpdate",
+  "title": "AlertUpdate",
+  "type": "object",
+  "description": "Request body for updating an alert.",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "The new status for the alert.",
+      "enum": [
+        "New",
+        "InProgress",
+        "Resolved"
+      ]
+    },
+    "assignedTo": {
+      "type": "string",
+      "description": "The new owner of the alert."
+    },
+    "classification": {
+      "type": "string",
+      "description": "The classification of the alert.",
+      "enum": [
+        "TruePositive",
+        "InformationalExpectedActivity",
+        "FalsePositive"
+      ]
+    },
+    "determination": {
+      "type": "string",
+      "description": "The determination of the alert.",
+      "enum": [
+        "MultiStagedAttack",
+        "MaliciousUserActivity",
+        "CompromisedUser",
+        "Malware",
+        "Phishing",
+        "UnwantedSoftware",
+        "SecurityTesting",
+        "LineOfBusinessApplication",
+        "ConfirmedActivity",
+        "NotMalicious",
+        "InsufficientData",
+        "Other"
+      ]
+    },
+    "comment": {
+      "type": "string",
+      "description": "A comment to add to the alert."
+    }
+  }
+}

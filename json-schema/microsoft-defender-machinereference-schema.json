@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MachineReference",
+  "title": "MachineReference",
+  "type": "object",
+  "description": "A reference to a machine affected by a vulnerability.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The machine ID."
+    },
+    "computerDnsName": {
+      "type": "string",
+      "description": "The fully qualified domain name of the machine."
+    },
+    "osPlatform": {
+      "type": "string",
+      "description": "The operating system platform."
+    },
+    "rbacGroupName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The RBAC group name."
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AlertEvidence",
+  "title": "AlertEvidence",
+  "type": "object",
+  "description": "Evidence associated with an alert. Can represent various entity types including User, Process, File, IP address, and URL.",
+  "properties": {
+    "entityType": {
+      "type": "string",
+      "description": "The type of evidence entity.",
+      "enum": [
+        "User",
+        "Process",
+        "File",
+        "Ip",
+        "Url"
+      ]
+    },
+    "evidenceCreationTime": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "The time the evidence was created."
+    },
+    "sha1": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "SHA-1 hash of the file."
+    },
+    "sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "SHA-256 hash of the file."
+    },
+    "fileName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The file name."
+    },
+    "filePath": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The file path."
+    },
+    "processId": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The process ID."
+    },
+    "processCommandLine": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The process command line."
+    },
+    "processCreationTime": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "The process creation time."
+    },
+    "parentProcessId": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The parent process ID."
+    },
+    "parentProcessCreationTime": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "The parent process creation time."
+    },
+    "parentProcessFileName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The parent process file name."
+    },
+    "parentProcessFilePath": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The parent process file path."
+    },
+    "ipAddress": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The IP address."
+    },
+    "url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The URL."
+    },
+    "registryKey": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The registry key."
+    },
+    "registryHive": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The registry hive."
+    },
+    "registryValueType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The registry value type."
+    },
+    "registryValue": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The registry value."
+    },
+    "accountName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The account name."
+    },
+    "domainName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The domain name."
+    },
+    "userSid": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The user security identifier (SID)."
+    },
+    "aadUserId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The Microsoft Entra user ID."
+    },
+    "userPrincipalName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The user principal name."
+    },
+    "detectionStatus": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The detection status of the evidence.",
+      "enum": [
+        "Detected",
+        "Blocked",
+        "Prevented",
+        null
+      ]
+    }
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Machine",
+  "title": "Machine",
+  "type": "object",
+  "description": "Represents a device (machine) that has communicated with Microsoft Defender for Endpoint, including its health status, risk assessment, and configuration details.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique machine identity.",
+      "examples": [
+        "1e5bc9d7e413ddd7902c2932e418702b84d0cc07"
+      ]
+    },
+    "computerDnsName": {
+      "type": "string",
+      "description": "The fully qualified domain name of the machine.",
+      "examples": [
+        "mymachine1.contoso.com"
+      ]
+    },
+    "firstSeen": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The first date and time where the machine was observed by Microsoft Defender for Endpoint."
+    },
+    "lastSeen": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time and date of the last received full device report. A device typically sends a full report every 24 hours."
+    },
+    "osPlatform": {
+      "type": "string",
+      "description": "The operating system platform.",
+      "examples": [
+        "Windows10",
+        "Windows11",
+        "Linux"
+      ]
+    },
+    "onboardingStatus": {
+      "type": "string",
+      "description": "The onboarding status of the machine.",
+      "enum": [
+        "Onboarded",
+        "CanBeOnboarded",
+        "Unsupported",
+        "InsufficientInfo"
+      ]
+    },
+    "osProcessor": {
+      "type": "string",
+      "description": "The operating system processor. Deprecated in favor of osArchitecture.",
+      "deprecated": true
+    },
+    "version": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The operating system version."
+    },
+    "osBuild": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "description": "The operating system build number."
+    },
+    "lastIpAddress": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The last IP address on the local NIC of the machine."
+    },
+    "lastExternalIpAddress": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The last IP address through which the machine accessed the internet."
+    },
+    "healthStatus": {
+      "type": "string",
+      "description": "The machine health status.",
+      "enum": [
+        "Active",
+        "Inactive",
+        "ImpairedCommunication",
+        "NoSensorData",
+        "NoSensorDataImpairedCommunication",
+        "Unknown"
+      ]
+    },
+    "rbacGroupName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The machine group name."
+    },
+    "rbacGroupId": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The machine group ID."
+    },
+    "riskScore": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The risk score as evaluated by Microsoft Defender for Endpoint.",
+      "enum": [
+        "None",
+        "Informational",
+        "Low",
+        "Medium",
+        "High",
+        null
+      ]
+    },
+    "aadDeviceId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid",
+      "description": "The Microsoft Entra Device ID (when the machine is Microsoft Entra joined)."
+    },
+    "machineTags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Set of machine tags."
+    },
+    "exposureLevel": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The exposure level as evaluated by Microsoft Defender for Endpoint.",
+      "enum": [
+        "None",
+        "Low",
+        "Medium",
+        "High",
+        null
+      ]
+    },
+    "deviceValue": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The value of the device.",
+      "enum": [
+        "Normal",
+        "Low",
+        "High",
+        null
+      ]
+    },
+    "ipAddresses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/IpAddress"
+      },
+      "description": "Set of IP address objects associated with the machine."
+    },
+    "osArchitecture": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The operating system architecture.",
+      "enum": [
+        "32-bit",
+        "64-bit",
+        null
+      ]
+    }
+  }
+}

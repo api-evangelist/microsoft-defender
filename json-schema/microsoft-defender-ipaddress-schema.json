@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IpAddress",
+  "title": "IpAddress",
+  "type": "object",
+  "description": "An IP address associated with a machine.",
+  "properties": {
+    "ipAddress": {
+      "type": "string",
+      "description": "The IP address."
+    },
+    "macAddress": {
+      "type": "string",
+      "description": "The MAC address."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of IP address."
+    },
+    "operationalStatus": {
+      "type": "string",
+      "description": "The operational status of the network adapter."
+    }
+  }
+}
