@@ -204,6 +204,8 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: OAuthScopes
+    url: scopes/microsoft-defender-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/MicrosoftDocs
   - type: Portal
