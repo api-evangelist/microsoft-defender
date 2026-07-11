@@ -204,6 +204,12 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: VulnerabilityDisclosure
+    url: security/microsoft-defender-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/microsoft-defender-domain-security.yml
+  - type: Authentication
+    url: authentication/microsoft-defender-authentication.yml
   - type: OAuthScopes
     url: scopes/microsoft-defender-scopes.yml
   - type: GitHubOrganization

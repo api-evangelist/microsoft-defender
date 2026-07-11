@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/microsoft-defender-for-endpoint-api-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+    scopes: 1
+  - flow: authorizationCode
+    authorizationUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/authorize
+    tokenUrl: https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token
+    scopes: 1
+  description: OAuth 2.0 authentication using Microsoft Entra ID (Azure AD). Supports both application-level
+    and delegated permissions.
+  sources:
+  - openapi/microsoft-defender-for-endpoint-api-openapi.yml
