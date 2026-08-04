@@ -1,0 +1,18 @@
+{
+  "provider": "microsoft-defender",
+  "sources": [
+    "microsoft-defender-alerts-api-openapi.yml",
+    "microsoft-defender-machines-api-openapi.yml",
+    "microsoft-defender-vulnerabilities-api-openapi.yml"
+  ],
+  "outputs": [
+    "microsoft-defender-alerts-api-openapi.yml",
+    "microsoft-defender-machines-api-openapi.yml",
+    "microsoft-defender-vulnerabilities-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
