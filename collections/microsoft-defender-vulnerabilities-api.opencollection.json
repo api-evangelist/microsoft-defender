@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Defender for Endpoint Alerts Vulnerabilities API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vulnerabilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Defender List vulnerabilities for a machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.security.microsoft.com/api/machines/:machineId/vulnerabilities",
+            "params": [
+              {
+                "name": "machineId",
+                "value": "1e5bc9d7e413ddd7902c2932e418702b84d0cc07",
+                "type": "path",
+                "description": "The device ID of the machine."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of discovered vulnerabilities related to a specific machine."
+        },
+        {
+          "info": {
+            "name": "Microsoft Defender List all vulnerabilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.security.microsoft.com/api/vulnerabilities",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "severity eq 'Critical'",
+                "type": "query",
+                "description": "OData filter expression. Filterable properties include id, name, description, cvssV3, publishedOn, severity, and updatedOn."
+              },
+              {
+                "name": "$top",
+                "value": "50",
+                "type": "query",
+                "description": "Maximum number of results to return (max 8,000)."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of all vulnerabilities affecting the organization. Supports OData V4 query parameters including $filter, $top (max 8,000), and $skip."
+        },
+        {
+          "info": {
+            "name": "Microsoft Defender Get vulnerability by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.security.microsoft.com/api/vulnerabilities/:vulnerabilityId",
+            "params": [
+              {
+                "name": "vulnerabilityId",
+                "value": "CVE-2024-7256",
+                "type": "path",
+                "description": "The CVE identifier of the vulnerability."
+              }
+            ]
+          },
+          "docs": "Retrieves a specific vulnerability by its CVE ID."
+        },
+        {
+          "info": {
+            "name": "Microsoft Defender List machines affected by a vulnerability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.security.microsoft.com/api/vulnerabilities/:vulnerabilityId/machineReferences",
+            "params": [
+              {
+                "name": "vulnerabilityId",
+                "value": "CVE-2024-7256",
+                "type": "path",
+                "description": "The CVE identifier of the vulnerability."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of machines affected by a specific vulnerability."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1342 @@
+{
+  "item": [
+    {
+      "id": "29563dd9-612f-451b-bb93-2778b7702490",
+      "name": "Machines",
+      "description": {
+        "content": "Manage devices (machines) that have communicated with Microsoft Defender for Endpoint. Retrieve device information, health status, risk scores, and exposure levels.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e09885ad-f876-47e9-bf09-ac54fff2afed",
+          "name": "Microsoft Defender List machines",
+          "request": {
+            "name": "Microsoft Defender List machines",
+            "description": {
+              "content": "Retrieves a collection of machines that have communicated with Microsoft Defender for Endpoint. Supports OData V4 query parameters including $filter, $top (max 10,000), and $skip. Rate limited to 100 calls per minute and 1,500 calls per hour.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "machines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Filterable properties include computerDnsName, id, version, deviceValue, aadDeviceId, machineTags, lastSeen, exposureLevel, onboardingStatus, lastIpAddress, healthStatus, osPlatform, riskScore, and rbacGroupId."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return (max 10,000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76474159-3de5-4905-a727-62387444ed83",
+              "name": "A collection of machine objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "healthStatus eq 'Active' and riskScore eq 'High'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"1e5bc9d7e413ddd7902c2932e418702b84d0cc07\",\n      \"computerDnsName\": \"mymachine1.contoso.com\",\n      \"firstSeen\": \"1963-04-02T22:49:58.224Z\",\n      \"lastSeen\": \"1989-02-13T03:42:18.043Z\",\n      \"osPlatform\": \"Windows10\",\n      \"onboardingStatus\": \"InsufficientInfo\",\n      \"osProcessor\": \"string\",\n      \"version\": \"string\",\n      \"osBuild\": 489,\n      \"lastIpAddress\": \"string\",\n      \"lastExternalIpAddress\": \"string\",\n      \"healthStatus\": \"Inactive\",\n      \"rbacGroupName\": \"string\",\n      \"rbacGroupId\": 8854,\n      \"riskScore\": \"High\",\n      \"aadDeviceId\": \"802de41c-e3a4-7fc8-bdbb-f148b5b199af\",\n      \"machineTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"exposureLevel\": \"None\",\n      \"deviceValue\": \"Low\",\n      \"ipAddresses\": [\n        {\n          \"ipAddress\": \"string\",\n          \"macAddress\": \"string\",\n          \"type\": \"string\",\n          \"operationalStatus\": \"string\"\n        },\n        {\n          \"ipAddress\": \"string\",\n          \"macAddress\": \"string\",\n          \"type\": \"string\",\n          \"operationalStatus\": \"string\"\n        }\n      ],\n      \"osArchitecture\": \"64-bit\"\n    },\n    {\n      \"id\": \"1e5bc9d7e413ddd7902c2932e418702b84d0cc07\",\n      \"computerDnsName\": \"mymachine1.contoso.com\",\n      \"firstSeen\": \"2014-12-08T15:45:24.604Z\",\n      \"lastSeen\": \"1958-10-09T00:59:09.185Z\",\n      \"osPlatform\": \"Windows10\",\n      \"onboardingStatus\": \"InsufficientInfo\",\n      \"osProcessor\": \"string\",\n      \"version\": \"string\",\n      \"osBuild\": 3193,\n      \"lastIpAddress\": \"string\",\n      \"lastExternalIpAddress\": \"string\",\n      \"healthStatus\": \"Unknown\",\n      \"rbacGroupName\": \"string\",\n      \"rbacGroupId\": 6286,\n      \"riskScore\": \"null\",\n      \"aadDeviceId\": \"e6510171-1b3a-2213-1efc-469de8caea39\",\n      \"machineTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"exposureLevel\": \"None\",\n      \"deviceValue\": \"null\",\n      \"ipAddresses\": [\n        {\n          \"ipAddress\": \"string\",\n          \"macAddress\": \"string\",\n          \"type\": \"string\",\n          \"operationalStatus\": \"string\"\n        },\n        {\n          \"ipAddress\": \"string\",\n          \"macAddress\": \"string\",\n          \"type\": \"string\",\n          \"operationalStatus\": \"string\"\n        }\n      ],\n      \"osArchitecture\": \"32-bit\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbbd2c51-d451-4101-94f3-badcd3250144",
+              "name": "Unauthorized. Invalid or missing authentication token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "healthStatus eq 'Active' and riskScore eq 'High'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95b48c5d-9351-40e6-9fe2-4b0bb9abdc63",
+              "name": "Forbidden. Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "healthStatus eq 'Active' and riskScore eq 'High'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a86b4b9-3a79-45c1-a36a-eee9c3fc0a8d",
+              "name": "No recent machines found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "healthStatus eq 'Active' and riskScore eq 'High'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "df3cd8c4-6565-4437-9cd7-658439178537",
+              "name": "Too many requests. Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "healthStatus eq 'Active' and riskScore eq 'High'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "622c5287-7ef7-43ca-bc49-349e2d8faff0",
+          "name": "Microsoft Defender Get machine by ID",
+          "request": {
+            "name": "Microsoft Defender Get machine by ID",
+            "description": {
+              "content": "Retrieves a specific machine by its device ID or computer name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "machines",
+                ":machineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "machineId",
+                  "description": "(Required) The device ID or computer name of the machine."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f5f871b-cd9f-4058-82cf-1e4dab198daa",
+              "name": "The machine object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID or computer name of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"1e5bc9d7e413ddd7902c2932e418702b84d0cc07\",\n  \"computerDnsName\": \"mymachine1.contoso.com\",\n  \"firstSeen\": \"2011-09-13T21:04:38.620Z\",\n  \"lastSeen\": \"1948-11-10T14:02:14.320Z\",\n  \"osPlatform\": \"Windows10\",\n  \"onboardingStatus\": \"CanBeOnboarded\",\n  \"osProcessor\": \"string\",\n  \"version\": \"string\",\n  \"osBuild\": 4445,\n  \"lastIpAddress\": \"string\",\n  \"lastExternalIpAddress\": \"string\",\n  \"healthStatus\": \"Unknown\",\n  \"rbacGroupName\": \"string\",\n  \"rbacGroupId\": 4474,\n  \"riskScore\": \"None\",\n  \"aadDeviceId\": \"9fc6a3a7-e9f2-8e34-f5bc-50eddb98696d\",\n  \"machineTags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"exposureLevel\": \"High\",\n  \"deviceValue\": \"High\",\n  \"ipAddresses\": [\n    {\n      \"ipAddress\": \"string\",\n      \"macAddress\": \"string\",\n      \"type\": \"string\",\n      \"operationalStatus\": \"string\"\n    },\n    {\n      \"ipAddress\": \"string\",\n      \"macAddress\": \"string\",\n      \"type\": \"string\",\n      \"operationalStatus\": \"string\"\n    }\n  ],\n  \"osArchitecture\": \"null\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc8a4de4-775d-424e-9f1f-b7dbc7bce5cc",
+              "name": "Unauthorized. Invalid or missing authentication token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID or computer name of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "89470ba5-1900-4bb0-94ff-8c5757396775",
+              "name": "Forbidden. Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID or computer name of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a679d30-30ae-4228-916b-f08f337203f5",
+              "name": "Machine with the specified ID was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID or computer name of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "509b0d93-3122-4237-9621-30eeba8da908",
+          "name": "Microsoft Defender List alerts for a machine",
+          "request": {
+            "name": "Microsoft Defender List alerts for a machine",
+            "description": {
+              "content": "Retrieves a collection of alerts related to a specific machine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "machines",
+                ":machineId",
+                "alerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "machineId",
+                  "description": "(Required) The device ID of the machine."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b338d7fa-f542-47ed-9da9-d8b78e579925",
+              "name": "A collection of alert objects for the specified machine.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"da637472900382838869_1364969609\",\n      \"title\": \"Low-reputation arbitrary code executed by signed executable\",\n      \"description\": \"string\",\n      \"alertCreationTime\": \"1995-05-16T15:52:53.362Z\",\n      \"lastEventTime\": \"1956-07-19T06:33:57.232Z\",\n      \"firstEventTime\": \"1953-07-17T19:56:14.396Z\",\n      \"lastUpdateTime\": \"1993-09-01T20:00:38.688Z\",\n      \"resolvedTime\": \"2014-04-23T14:33:15.557Z\",\n      \"incidentId\": 6455,\n      \"investigationId\": 2029,\n      \"investigationState\": \"Benign\",\n      \"assignedTo\": \"string\",\n      \"rbacGroupName\": \"string\",\n      \"mitreTechniques\": [\n        \"T1064\",\n        \"T1085\",\n        \"T1220\"\n      ],\n      \"relatedUser\": {\n        \"userName\": \"string\",\n        \"domainName\": \"string\"\n      },\n      \"severity\": \"High\",\n      \"status\": \"InProgress\",\n      \"classification\": \"null\",\n      \"determination\": \"MultiStagedAttack\",\n      \"category\": \"Execution\",\n      \"detectionSource\": \"WindowsDefenderAtp\",\n      \"threatFamilyName\": \"string\",\n      \"threatName\": \"string\",\n      \"machineId\": \"string\",\n      \"computerDnsName\": \"string\",\n      \"aadTenantId\": \"string\",\n      \"detectorId\": \"string\",\n      \"comments\": [\n        {\n          \"comment\": \"string\",\n          \"createdBy\": \"string\",\n          \"createdTime\": \"2001-05-12T10:01:30.491Z\"\n        },\n        {\n          \"comment\": \"string\",\n          \"createdBy\": \"string\",\n          \"createdTime\": \"1992-12-10T15:13:51.924Z\"\n        }\n      ],\n      \"evidence\": [\n        {\n          \"entityType\": \"Process\",\n          \"evidenceCreationTime\": \"1990-02-13T03:50:01.709Z\",\n          \"sha1\": \"string\",\n          \"sha256\": \"string\",\n          \"fileName\": \"string\",\n          \"filePath\": \"string\",\n          \"processId\": 6244,\n          \"processCommandLine\": \"string\",\n          \"processCreationTime\": \"2009-10-03T01:36:34.142Z\",\n          \"parentProcessId\": 6189,\n          \"parentProcessCreationTime\": \"1956-03-25T21:28:00.495Z\",\n          \"parentProcessFileName\": \"string\",\n          \"parentProcessFilePath\": \"string\",\n          \"ipAddress\": \"string\",\n          \"url\": \"string\",\n          \"registryKey\": \"string\",\n          \"registryHive\": \"string\",\n          \"registryValueType\": \"string\",\n          \"registryValue\": \"string\",\n          \"accountName\": \"string\",\n          \"domainName\": \"string\",\n          \"userSid\": \"string\",\n          \"aadUserId\": \"string\",\n          \"userPrincipalName\": \"string\",\n          \"detectionStatus\": \"Prevented\"\n        },\n        {\n          \"entityType\": \"Ip\",\n          \"evidenceCreationTime\": \"1946-10-06T04:10:29.654Z\",\n          \"sha1\": \"string\",\n          \"sha256\": \"string\",\n          \"fileName\": \"string\",\n          \"filePath\": \"string\",\n          \"processId\": 851,\n          \"processCommandLine\": \"string\",\n          \"processCreationTime\": \"1963-01-23T05:52:01.709Z\",\n          \"parentProcessId\": 846,\n          \"parentProcessCreationTime\": \"1968-07-24T07:06:37.952Z\",\n          \"parentProcessFileName\": \"string\",\n          \"parentProcessFilePath\": \"string\",\n          \"ipAddress\": \"string\",\n          \"url\": \"string\",\n          \"registryKey\": \"string\",\n          \"registryHive\": \"string\",\n          \"registryValueType\": \"string\",\n          \"registryValue\": \"string\",\n          \"accountName\": \"string\",\n          \"domainName\": \"string\",\n          \"userSid\": \"string\",\n          \"aadUserId\": \"string\",\n          \"userPrincipalName\": \"string\",\n          \"detectionStatus\": \"null\"\n        }\n      ]\n    },\n    {\n      \"id\": \"da637472900382838869_1364969609\",\n      \"title\": \"Low-reputation arbitrary code executed by signed executable\",\n      \"description\": \"string\",\n      \"alertCreationTime\": \"1961-10-10T02:11:55.835Z\",\n      \"lastEventTime\": \"1976-07-03T09:18:54.343Z\",\n      \"firstEventTime\": \"1994-08-04T18:33:08.213Z\",\n      \"lastUpdateTime\": \"2002-08-17T14:56:56.994Z\",\n      \"resolvedTime\": \"1984-08-17T13:10:30.389Z\",\n      \"incidentId\": 2273,\n      \"investigationId\": 7491,\n      \"investigationState\": \"UnsupportedAlertType\",\n      \"assignedTo\": \"string\",\n      \"rbacGroupName\": \"string\",\n      \"mitreTechniques\": [\n        \"T1064\",\n        \"T1085\",\n        \"T1220\"\n      ],\n      \"relatedUser\": {\n        \"userName\": \"string\",\n        \"domainName\": \"string\"\n      },\n      \"severity\": \"Medium\",\n      \"status\": \"InProgress\",\n      \"classification\": \"InformationalExpectedActivity\",\n      \"determination\": \"Malware\",\n      \"category\": \"Execution\",\n      \"detectionSource\": \"WindowsDefenderAtp\",\n      \"threatFamilyName\": \"string\",\n      \"threatName\": \"string\",\n      \"machineId\": \"string\",\n      \"computerDnsName\": \"string\",\n      \"aadTenantId\": \"string\",\n      \"detectorId\": \"string\",\n      \"comments\": [\n        {\n          \"comment\": \"string\",\n          \"createdBy\": \"string\",\n          \"createdTime\": \"1993-10-02T23:08:09.981Z\"\n        },\n        {\n          \"comment\": \"string\",\n          \"createdBy\": \"string\",\n          \"createdTime\": \"1977-03-26T18:00:05.648Z\"\n        }\n      ],\n      \"evidence\": [\n        {\n          \"entityType\": \"User\",\n          \"evidenceCreationTime\": \"1962-02-23T12:19:51.526Z\",\n          \"sha1\": \"string\",\n          \"sha256\": \"string\",\n          \"fileName\": \"string\",\n          \"filePath\": \"string\",\n          \"processId\": 7236,\n          \"processCommandLine\": \"string\",\n          \"processCreationTime\": \"2011-07-21T03:23:24.591Z\",\n          \"parentProcessId\": 2785,\n          \"parentProcessCreationTime\": \"1959-07-19T08:37:27.305Z\",\n          \"parentProcessFileName\": \"string\",\n          \"parentProcessFilePath\": \"string\",\n          \"ipAddress\": \"string\",\n          \"url\": \"string\",\n          \"registryKey\": \"string\",\n          \"registryHive\": \"string\",\n          \"registryValueType\": \"string\",\n          \"registryValue\": \"string\",\n          \"accountName\": \"string\",\n          \"domainName\": \"string\",\n          \"userSid\": \"string\",\n          \"aadUserId\": \"string\",\n          \"userPrincipalName\": \"string\",\n          \"detectionStatus\": \"Prevented\"\n        },\n        {\n          \"entityType\": \"User\",\n          \"evidenceCreationTime\": \"1997-09-01T22:02:21.169Z\",\n          \"sha1\": \"string\",\n          \"sha256\": \"string\",\n          \"fileName\": \"string\",\n          \"filePath\": \"string\",\n          \"processId\": 8719,\n          \"processCommandLine\": \"string\",\n          \"processCreationTime\": \"1977-12-12T08:27:04.169Z\",\n          \"parentProcessId\": 6919,\n          \"parentProcessCreationTime\": \"1971-12-28T17:13:03.587Z\",\n          \"parentProcessFileName\": \"string\",\n          \"parentProcessFilePath\": \"string\",\n          \"ipAddress\": \"string\",\n          \"url\": \"string\",\n          \"registryKey\": \"string\",\n          \"registryHive\": \"string\",\n          \"registryValueType\": \"string\",\n          \"registryValue\": \"string\",\n          \"accountName\": \"string\",\n          \"domainName\": \"string\",\n          \"userSid\": \"string\",\n          \"aadUserId\": \"string\",\n          \"userPrincipalName\": \"string\",\n          \"detectionStatus\": \"Prevented\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f81e2ea8-ac7d-4160-b8b7-c931bf085312",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6cfea1df-dbbb-483e-8ede-154a646a6fa4",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c007652-9fc9-4a88-aed3-f9469c0ee229",
+              "name": "Machine not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67acab3d-01d3-4465-b050-6dbfd4a655c2",
+          "name": "Microsoft Defender List vulnerabilities for a machine",
+          "request": {
+            "name": "Microsoft Defender List vulnerabilities for a machine",
+            "description": {
+              "content": "Retrieves a collection of discovered vulnerabilities related to a specific machine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "machines",
+                ":machineId",
+                "vulnerabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "machineId",
+                  "description": "(Required) The device ID of the machine."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b23cbe32-176c-435a-9e8b-7c80e1e1438f",
+              "name": "A collection of vulnerability objects for the machine.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"CVE-2024-7256\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"Low\",\n      \"cvssV3\": 8586.899925135032,\n      \"cvssVector\": \"CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C\",\n      \"exposedMachines\": 4255,\n      \"publishedOn\": \"1957-01-11T02:47:35.205Z\",\n      \"updatedOn\": \"1968-09-29T23:50:45.978Z\",\n      \"publicExploit\": true,\n      \"exploitVerified\": true,\n      \"exploitInKit\": true,\n      \"exploitTypes\": [\n        \"Local privilege escalation\",\n        \"Denial of service\",\n        \"Local\"\n      ],\n      \"exploitUris\": [\n        \"https://dsugxoJxAQEFbtVoOiitSmBDrx.ypzw-XAOK+UHD1YNtZRwmo,V6HqoT\",\n        \"http://tgXbrGndZSpQUqMHmwkzZKIx.nevjTmlJqRaju85lHwH.\"\n      ],\n      \"cveSupportability\": \"Supported\",\n      \"epss\": 0.2221367816175479,\n      \"status\": \"NoActionRequired\"\n    },\n    {\n      \"id\": \"CVE-2024-7256\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"Low\",\n      \"cvssV3\": 4712.697928455985,\n      \"cvssVector\": \"CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C\",\n      \"exposedMachines\": 4917,\n      \"publishedOn\": \"1965-07-22T14:36:03.085Z\",\n      \"updatedOn\": \"1972-01-13T01:28:29.102Z\",\n      \"publicExploit\": true,\n      \"exploitVerified\": true,\n      \"exploitInKit\": false,\n      \"exploitTypes\": [\n        \"Local privilege escalation\",\n        \"Denial of service\",\n        \"Local\"\n      ],\n      \"exploitUris\": [\n        \"https://MumdfXvLZphImmAErgzll.erLAHtaSWXemMTnlrQbpCrjZ8MlAgTtbdoSYYvsJS9TVqIY3HkvSf3l13VOYcxB\",\n        \"https://iJGCDwKpTEqbfpjPNIxWouocssVIZpb.ccihm7-aMTP6TExxkYY5HiFKmgbb8y\"\n      ],\n      \"cveSupportability\": \"NotSupported\",\n      \"epss\": 0.12065763597205792,\n      \"status\": \"PartialException\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ef902a5-d3c9-4bcd-b3c0-f260d3c10236",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bf60098-60e6-4b85-8130-27808e92c3a6",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03715532-9d91-485f-a289-8464458c6e71",
+              "name": "Machine not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82d6fd36-14da-4287-9ba9-f1ace5698373",
+          "name": "Microsoft Defender List machines affected by a vulnerability",
+          "request": {
+            "name": "Microsoft Defender List machines affected by a vulnerability",
+            "description": {
+              "content": "Retrieves a list of machines affected by a specific vulnerability.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vulnerabilities",
+                ":vulnerabilityId",
+                "machineReferences"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vulnerabilityId",
+                  "description": "(Required) The CVE identifier of the vulnerability."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84fcafb6-b50c-4843-b6e4-ba92574a655a",
+              "name": "A collection of machine references for the vulnerability.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId",
+                    "machineReferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"computerDnsName\": \"string\",\n      \"osPlatform\": \"string\",\n      \"rbacGroupName\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"computerDnsName\": \"string\",\n      \"osPlatform\": \"string\",\n      \"rbacGroupName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28f44895-00c4-49a9-9cfa-bb7c3e2fe084",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId",
+                    "machineReferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a057ecbf-6580-492d-a892-2ad747b223d7",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId",
+                    "machineReferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "01a3df72-56f9-4777-aaf8-1b87a8115df7",
+              "name": "Vulnerability not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId",
+                    "machineReferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.security.microsoft.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://api.security.microsoft.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dff372c4-2752-4c16-bb52-771b108881b4",
+    "name": "Microsoft Defender for Endpoint Alerts Machines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for endpoint detection and response, threat and vulnerability management, and automated investigation and remediation. Provides programmatic access to alerts, machines, and vulnerabilities managed by Microsoft Defender for Endpoint.\n\nContact Support:\n Name: Microsoft Defender for Endpoint",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,1045 @@
+{
+  "item": [
+    {
+      "id": "3dfe358c-0f4b-45a8-b106-b34a533552a3",
+      "name": "Vulnerabilities",
+      "description": {
+        "content": "Retrieve vulnerability information from Microsoft Defender Vulnerability Management. Access CVE data, severity scores, exploit information, and exposure metrics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6a301768-20f5-4cac-9585-ce183e3a903d",
+          "name": "Microsoft Defender List vulnerabilities for a machine",
+          "request": {
+            "name": "Microsoft Defender List vulnerabilities for a machine",
+            "description": {
+              "content": "Retrieves a collection of discovered vulnerabilities related to a specific machine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "machines",
+                ":machineId",
+                "vulnerabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "machineId",
+                  "description": "(Required) The device ID of the machine."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7dc27610-a152-4bd7-8b91-f21fb4d43fdd",
+              "name": "A collection of vulnerability objects for the machine.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"CVE-2024-7256\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"High\",\n      \"cvssV3\": 5015.9872680198705,\n      \"cvssVector\": \"CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C\",\n      \"exposedMachines\": 2612,\n      \"publishedOn\": \"2001-11-04T00:12:52.121Z\",\n      \"updatedOn\": \"1985-03-06T12:36:44.634Z\",\n      \"publicExploit\": false,\n      \"exploitVerified\": true,\n      \"exploitInKit\": true,\n      \"exploitTypes\": [\n        \"Local privilege escalation\",\n        \"Denial of service\",\n        \"Local\"\n      ],\n      \"exploitUris\": [\n        \"https://moYAcSLpmpQFifXe.yvyau.G6vvunfxrsEbIkmX7\",\n        \"http://DDCAEHYoMzhnqFtLAEOoRAVVOB.ppJ6NKCmW8Bp92jQnuT94QPQrP4.WcYOx\"\n      ],\n      \"cveSupportability\": \"Supported\",\n      \"epss\": 0.4176412938877839,\n      \"status\": \"PartialException\"\n    },\n    {\n      \"id\": \"CVE-2024-7256\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"Medium\",\n      \"cvssV3\": 7961.623769013275,\n      \"cvssVector\": \"CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C\",\n      \"exposedMachines\": 2250,\n      \"publishedOn\": \"1976-04-20T02:57:59.635Z\",\n      \"updatedOn\": \"1965-06-28T18:10:10.277Z\",\n      \"publicExploit\": false,\n      \"exploitVerified\": false,\n      \"exploitInKit\": true,\n      \"exploitTypes\": [\n        \"Local privilege escalation\",\n        \"Denial of service\",\n        \"Local\"\n      ],\n      \"exploitUris\": [\n        \"https://dbko.lfvgVN9gKusaUiFWcoZNifERx2l\",\n        \"https://J.ecuUvclCI3ylrzc-mzCg50Eje-wQnE2uA4UCgtoK2JncGPs7nNfoxsMJ17d,qqx+81Ez9qZBBSRx\"\n      ],\n      \"cveSupportability\": \"SupportedInPremium\",\n      \"epss\": 0.8609533257051651,\n      \"status\": \"PartialException\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1615db00-4fca-45eb-98e4-6cb8a860f996",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5efce370-c6d0-4a43-a8af-dade3e95fc3b",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28312157-d23f-410e-88b5-7d9f89c56046",
+              "name": "Machine not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "machines",
+                    ":machineId",
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "machineId",
+                      "description": "(Required) The device ID of the machine."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e239bf2c-2865-45d8-b7f6-22659a67218e",
+          "name": "Microsoft Defender List all vulnerabilities",
+          "request": {
+            "name": "Microsoft Defender List all vulnerabilities",
+            "description": {
+              "content": "Retrieves a list of all vulnerabilities affecting the organization. Supports OData V4 query parameters including $filter, $top (max 8,000), and $skip.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vulnerabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Filterable properties include id, name, description, cvssV3, publishedOn, severity, and updatedOn."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return (max 8,000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45dbc001-947f-4935-8883-ec9ab12bfcc7",
+              "name": "A collection of vulnerability objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "severity eq 'Critical'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"CVE-2024-7256\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"Medium\",\n      \"cvssV3\": 7234.700069917996,\n      \"cvssVector\": \"CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C\",\n      \"exposedMachines\": 5575,\n      \"publishedOn\": \"1957-05-04T16:23:23.620Z\",\n      \"updatedOn\": \"2013-09-06T22:06:49.046Z\",\n      \"publicExploit\": true,\n      \"exploitVerified\": false,\n      \"exploitInKit\": false,\n      \"exploitTypes\": [\n        \"Local privilege escalation\",\n        \"Denial of service\",\n        \"Local\"\n      ],\n      \"exploitUris\": [\n        \"http://tyDchvNBrszArhkNLHNAZMwE.nhqUmNBfR5Z90z+7\",\n        \"https://nayqTPFQi.zcaBDHjTRvyQcXge1aBDZ-7WiVOI3RLrqYqkTI\"\n      ],\n      \"cveSupportability\": \"Supported\",\n      \"epss\": 0.08860688051808763,\n      \"status\": \"PartialException\"\n    },\n    {\n      \"id\": \"CVE-2024-7256\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"severity\": \"Critical\",\n      \"cvssV3\": 5588.495771318209,\n      \"cvssVector\": \"CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C\",\n      \"exposedMachines\": 662,\n      \"publishedOn\": \"1998-12-15T08:45:07.740Z\",\n      \"updatedOn\": \"1965-02-07T04:27:29.725Z\",\n      \"publicExploit\": true,\n      \"exploitVerified\": true,\n      \"exploitInKit\": false,\n      \"exploitTypes\": [\n        \"Local privilege escalation\",\n        \"Denial of service\",\n        \"Local\"\n      ],\n      \"exploitUris\": [\n        \"https://rFXOdJXLhgzzXOqPudaHZWUMT.kzcuUne+nOkYnukWi--o,w\",\n        \"http://XhCOHdjCbfXDLphFXcXedCWnmdN.crlftdj9n1PqQsvosP\"\n      ],\n      \"cveSupportability\": \"NotSupported\",\n      \"epss\": 0.2565337259889313,\n      \"status\": \"UnderException\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13d41894-a404-486c-bd81-f73fa4da9f70",
+              "name": "Unauthorized. Invalid or missing authentication token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "severity eq 'Critical'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c7174a0-66bc-4236-b7e9-e761b5f9e701",
+              "name": "Forbidden. Insufficient permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "severity eq 'Critical'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a876eabb-12d0-4470-9781-7486907089d0",
+              "name": "Too many requests. Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "severity eq 'Critical'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "50"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0283c7f-35a7-4194-b7a3-3cc6f19df0c7",
+          "name": "Microsoft Defender Get vulnerability by ID",
+          "request": {
+            "name": "Microsoft Defender Get vulnerability by ID",
+            "description": {
+              "content": "Retrieves a specific vulnerability by its CVE ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vulnerabilities",
+                ":vulnerabilityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vulnerabilityId",
+                  "description": "(Required) The CVE identifier of the vulnerability."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b012c71-23f4-47ea-aed2-33e2e98ce78c",
+              "name": "The vulnerability object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"CVE-2024-7256\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"severity\": \"Low\",\n  \"cvssV3\": 2941.853925029185,\n  \"cvssVector\": \"CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C\",\n  \"exposedMachines\": 3240,\n  \"publishedOn\": \"1998-04-20T10:40:58.038Z\",\n  \"updatedOn\": \"2016-04-17T00:30:01.763Z\",\n  \"publicExploit\": true,\n  \"exploitVerified\": true,\n  \"exploitInKit\": false,\n  \"exploitTypes\": [\n    \"Local privilege escalation\",\n    \"Denial of service\",\n    \"Local\"\n  ],\n  \"exploitUris\": [\n    \"http://SnIFbMmyPBwlqfPrehoLlOywGkmtVKCW.gtZ1tzz5\",\n    \"http://xYzFMHQLTJtUSmkrzbK.ymhjmCURqQAlHjcPiaojS4oHrJvYE+6uZNyqYNHArxM\"\n  ],\n  \"cveSupportability\": \"SupportedInPremium\",\n  \"epss\": 0.3276671144967833,\n  \"status\": \"NoActionRequired\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d63371c-27a5-4fef-b2ea-c74aa897b7e2",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b3069b3-85bb-4bc7-8d42-80a8ddda75b4",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0271bba6-1b39-41c6-88b2-0ae48cc8b5ce",
+              "name": "Vulnerability not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d107bd08-1bb9-4435-8719-9ef260576290",
+          "name": "Microsoft Defender List machines affected by a vulnerability",
+          "request": {
+            "name": "Microsoft Defender List machines affected by a vulnerability",
+            "description": {
+              "content": "Retrieves a list of machines affected by a specific vulnerability.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vulnerabilities",
+                ":vulnerabilityId",
+                "machineReferences"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vulnerabilityId",
+                  "description": "(Required) The CVE identifier of the vulnerability."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff7ce39a-69c8-4e6f-ae3e-d0771c9fbfe4",
+              "name": "A collection of machine references for the vulnerability.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId",
+                    "machineReferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"@odata.context\": \"string\",\n  \"value\": [\n    {\n      \"id\": \"string\",\n      \"computerDnsName\": \"string\",\n      \"osPlatform\": \"string\",\n      \"rbacGroupName\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"computerDnsName\": \"string\",\n      \"osPlatform\": \"string\",\n      \"rbacGroupName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "158f0074-fbb6-4cd8-bc97-60b6c692bf55",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId",
+                    "machineReferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48b2d4e0-ea94-4eb1-b150-d79f2b623367",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId",
+                    "machineReferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b730ea2-4021-42b8-9d20-9faff938de8b",
+              "name": "Vulnerability not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vulnerabilities",
+                    ":vulnerabilityId",
+                    "machineReferences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulnerabilityId",
+                      "description": "(Required) The CVE identifier of the vulnerability."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.security.microsoft.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://api.security.microsoft.com/.default"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "750ed682-318c-41da-baf2-dee15f2c1581",
+    "name": "Microsoft Defender for Endpoint Alerts Vulnerabilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for endpoint detection and response, threat and vulnerability management, and automated investigation and remediation. Provides programmatic access to alerts, machines, and vulnerabilities managed by Microsoft Defender for Endpoint.\n\nContact Support:\n Name: Microsoft Defender for Endpoint",
+      "type": "text/plain"
+    }
+  }
+}

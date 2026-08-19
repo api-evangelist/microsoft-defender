@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Defender for Endpoint Alerts Machines API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Machines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Defender List machines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.security.microsoft.com/api/machines",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "healthStatus eq 'Active' and riskScore eq 'High'",
+                "type": "query",
+                "description": "OData filter expression. Filterable properties include computerDnsName, id, version, deviceValue, aadDeviceId, machineTags, lastSeen, exposureLevel, onboardingStatus, lastIpAddress, healthStatus, osPlatform, riskScore, and rbacGroupId."
+              },
+              {
+                "name": "$top",
+                "value": "50",
+                "type": "query",
+                "description": "Maximum number of results to return (max 10,000)."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip for pagination."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of machines that have communicated with Microsoft Defender for Endpoint. Supports OData V4 query parameters including $filter, $top (max 10,000), and $skip. Rate limited to 100 calls per minute and 1,500 calls per hour."
+        },
+        {
+          "info": {
+            "name": "Microsoft Defender Get machine by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.security.microsoft.com/api/machines/:machineId",
+            "params": [
+              {
+                "name": "machineId",
+                "value": "1e5bc9d7e413ddd7902c2932e418702b84d0cc07",
+                "type": "path",
+                "description": "The device ID or computer name of the machine."
+              }
+            ]
+          },
+          "docs": "Retrieves a specific machine by its device ID or computer name."
+        },
+        {
+          "info": {
+            "name": "Microsoft Defender List alerts for a machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.security.microsoft.com/api/machines/:machineId/alerts",
+            "params": [
+              {
+                "name": "machineId",
+                "value": "1e5bc9d7e413ddd7902c2932e418702b84d0cc07",
+                "type": "path",
+                "description": "The device ID of the machine."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of alerts related to a specific machine."
+        },
+        {
+          "info": {
+            "name": "Microsoft Defender List vulnerabilities for a machine",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.security.microsoft.com/api/machines/:machineId/vulnerabilities",
+            "params": [
+              {
+                "name": "machineId",
+                "value": "1e5bc9d7e413ddd7902c2932e418702b84d0cc07",
+                "type": "path",
+                "description": "The device ID of the machine."
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of discovered vulnerabilities related to a specific machine."
+        },
+        {
+          "info": {
+            "name": "Microsoft Defender List machines affected by a vulnerability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.security.microsoft.com/api/vulnerabilities/:vulnerabilityId/machineReferences",
+            "params": [
+              {
+                "name": "vulnerabilityId",
+                "value": "CVE-2024-7256",
+                "type": "path",
+                "description": "The CVE identifier of the vulnerability."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of machines affected by a specific vulnerability."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
