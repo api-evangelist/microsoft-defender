@@ -16,7 +16,7 @@ accessModel:
 image: https://www.microsoft.com/favicon.ico
 created: '2024-01-15'
 modified: '2026-05-19'
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-defender/refs/heads/main/apis.yml
 apis:
 - name: Microsoft Defender for Cloud Apps API
@@ -197,7 +197,7 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
   - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
 - aid: microsoft-defender:microsoft-defender-machines-api
@@ -237,7 +237,7 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
   - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
 - aid: microsoft-defender:microsoft-defender-vulnerabilities-api
@@ -277,7 +277,7 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
   - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
-  - type: Code Samples
+  - type: CodeExamples
     url: >-
       https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
 maintainers:
