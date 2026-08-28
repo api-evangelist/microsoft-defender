@@ -1,5 +1,17 @@
 name: Microsoft Defender
 description: Collection of Microsoft Defender security APIs for threat protection, endpoint security, and security operations.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -284,6 +296,9 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: CapabilityMap
+    url: capabilities/microsoft-defender-capability-edges.yml
+    name: Microsoft Defender Business Capability Map
   - type: AgenticAccess
     url: agentic-access/microsoft-defender-agentic-access.yml
   - type: VulnerabilityDisclosure
