@@ -297,6 +297,8 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 common:
+  - type: Website
+    url: https://www.microsoft.com/
   - type: CapabilityMap
     url: capabilities/microsoft-defender-capability-edges.yml
     name: Microsoft Defender Business Capability Map
@@ -332,3 +334,5 @@ common:
     url: https://learn.microsoft.com/en-us/graph/auth/
   - type: Security Pricing Overview
     url: https://www.microsoft.com/en-us/security/pricing-overview
+x-parent: microsoft
+x-relationship: product

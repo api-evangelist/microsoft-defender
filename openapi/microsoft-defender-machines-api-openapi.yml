@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Defender for Endpoint Alerts Machines API
   description: API for endpoint detection and response, threat and vulnerability management, and automated investigation and remediation. Provides programmatic access to alerts, machines, and vulnerabilities managed by Microsoft Defender for Endpoint.
@@ -217,32 +217,6 @@ paths:
           description: Vulnerability not found.
 components:
   schemas:
-    IpAddress:
-      type: object
-      description: An IP address associated with a machine.
-      properties:
-        ipAddress:
-          type: string
-          description: The IP address.
-        macAddress:
-          type: string
-          description: The MAC address.
-        type:
-          type: string
-          description: The type of IP address.
-        operationalStatus:
-          type: string
-          description: The operational status of the network adapter.
-    RelatedUser:
-      type: object
-      description: Details of a user related to an alert.
-      properties:
-        userName:
-          type: string
-          description: The user name.
-        domainName:
-          type: string
-          description: The domain name.
     Machine:
       type: object
       description: Represents a device (machine) that has communicated with Microsoft Defender for Endpoint, including its health status, risk assessment, and configuration details.
@@ -383,147 +357,22 @@ components:
           - 32-bit
           - 64-bit
           - null
-    AlertEvidence:
+    IpAddress:
       type: object
-      description: Evidence associated with an alert. Can represent various entity types including User, Process, File, IP address, and URL.
+      description: An IP address associated with a machine.
       properties:
-        entityType:
-          type: string
-          description: The type of evidence entity.
-          enum:
-          - User
-          - Process
-          - File
-          - Ip
-          - Url
-        evidenceCreationTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The time the evidence was created.
-        sha1:
-          type:
-          - string
-          - 'null'
-          description: SHA-1 hash of the file.
-        sha256:
-          type:
-          - string
-          - 'null'
-          description: SHA-256 hash of the file.
-        fileName:
-          type:
-          - string
-          - 'null'
-          description: The file name.
-        filePath:
-          type:
-          - string
-          - 'null'
-          description: The file path.
-        processId:
-          type:
-          - integer
-          - 'null'
-          description: The process ID.
-        processCommandLine:
-          type:
-          - string
-          - 'null'
-          description: The process command line.
-        processCreationTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The process creation time.
-        parentProcessId:
-          type:
-          - integer
-          - 'null'
-          description: The parent process ID.
-        parentProcessCreationTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The parent process creation time.
-        parentProcessFileName:
-          type:
-          - string
-          - 'null'
-          description: The parent process file name.
-        parentProcessFilePath:
-          type:
-          - string
-          - 'null'
-          description: The parent process file path.
         ipAddress:
-          type:
-          - string
-          - 'null'
+          type: string
           description: The IP address.
-        url:
-          type:
-          - string
-          - 'null'
-          description: The URL.
-        registryKey:
-          type:
-          - string
-          - 'null'
-          description: The registry key.
-        registryHive:
-          type:
-          - string
-          - 'null'
-          description: The registry hive.
-        registryValueType:
-          type:
-          - string
-          - 'null'
-          description: The registry value type.
-        registryValue:
-          type:
-          - string
-          - 'null'
-          description: The registry value.
-        accountName:
-          type:
-          - string
-          - 'null'
-          description: The account name.
-        domainName:
-          type:
-          - string
-          - 'null'
-          description: The domain name.
-        userSid:
-          type:
-          - string
-          - 'null'
-          description: The user security identifier (SID).
-        aadUserId:
-          type:
-          - string
-          - 'null'
-          description: The Microsoft Entra user ID.
-        userPrincipalName:
-          type:
-          - string
-          - 'null'
-          description: The user principal name.
-        detectionStatus:
-          type:
-          - string
-          - 'null'
-          description: The detection status of the evidence.
-          enum:
-          - Detected
-          - Blocked
-          - Prevented
-          - null
+        macAddress:
+          type: string
+          description: The MAC address.
+        type:
+          type: string
+          description: The type of IP address.
+        operationalStatus:
+          type: string
+          description: The operational status of the network adapter.
     Alert:
       type: object
       description: Represents a security alert generated by Microsoft Defender for Endpoint, indicating a detected threat, suspicious activity, or security event on an endpoint.
@@ -749,6 +598,171 @@ components:
           - string
           - 'null'
           description: The RBAC group name.
+    RelatedUser:
+      type: object
+      description: Details of a user related to an alert.
+      properties:
+        userName:
+          type: string
+          description: The user name.
+        domainName:
+          type: string
+          description: The domain name.
+    AlertEvidence:
+      type: object
+      description: Evidence associated with an alert. Can represent various entity types including User, Process, File, IP address, and URL.
+      properties:
+        entityType:
+          type: string
+          description: The type of evidence entity.
+          enum:
+          - User
+          - Process
+          - File
+          - Ip
+          - Url
+        evidenceCreationTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The time the evidence was created.
+        sha1:
+          type:
+          - string
+          - 'null'
+          description: SHA-1 hash of the file.
+        sha256:
+          type:
+          - string
+          - 'null'
+          description: SHA-256 hash of the file.
+        fileName:
+          type:
+          - string
+          - 'null'
+          description: The file name.
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: The file path.
+        processId:
+          type:
+          - integer
+          - 'null'
+          description: The process ID.
+        processCommandLine:
+          type:
+          - string
+          - 'null'
+          description: The process command line.
+        processCreationTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The process creation time.
+        parentProcessId:
+          type:
+          - integer
+          - 'null'
+          description: The parent process ID.
+        parentProcessCreationTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The parent process creation time.
+        parentProcessFileName:
+          type:
+          - string
+          - 'null'
+          description: The parent process file name.
+        parentProcessFilePath:
+          type:
+          - string
+          - 'null'
+          description: The parent process file path.
+        ipAddress:
+          type:
+          - string
+          - 'null'
+          description: The IP address.
+        url:
+          type:
+          - string
+          - 'null'
+          description: The URL.
+        registryKey:
+          type:
+          - string
+          - 'null'
+          description: The registry key.
+        registryHive:
+          type:
+          - string
+          - 'null'
+          description: The registry hive.
+        registryValueType:
+          type:
+          - string
+          - 'null'
+          description: The registry value type.
+        registryValue:
+          type:
+          - string
+          - 'null'
+          description: The registry value.
+        accountName:
+          type:
+          - string
+          - 'null'
+          description: The account name.
+        domainName:
+          type:
+          - string
+          - 'null'
+          description: The domain name.
+        userSid:
+          type:
+          - string
+          - 'null'
+          description: The user security identifier (SID).
+        aadUserId:
+          type:
+          - string
+          - 'null'
+          description: The Microsoft Entra user ID.
+        userPrincipalName:
+          type:
+          - string
+          - 'null'
+          description: The user principal name.
+        detectionStatus:
+          type:
+          - string
+          - 'null'
+          description: The detection status of the evidence.
+          enum:
+          - Detected
+          - Blocked
+          - Prevented
+          - null
+    AlertComment:
+      type: object
+      description: A comment associated with an alert.
+      properties:
+        comment:
+          type: string
+          description: The comment text.
+        createdBy:
+          type: string
+          description: The user who created the comment.
+        createdTime:
+          type: string
+          format: date-time
+          description: The date and time the comment was created.
     Vulnerability:
       type: object
       description: Represents a known vulnerability (CVE) detected by Microsoft Defender Vulnerability Management, including severity, CVSS scoring, exploit information, and exposure metrics.
@@ -846,20 +860,6 @@ components:
           - UnderException
           - PartialException
           - null
-    AlertComment:
-      type: object
-      description: A comment associated with an alert.
-      properties:
-        comment:
-          type: string
-          description: The comment text.
-        createdBy:
-          type: string
-          description: The user who created the comment.
-        createdTime:
-          type: string
-          format: date-time
-          description: The date and time the comment was created.
   securitySchemes:
     oauth2:
       type: oauth2
