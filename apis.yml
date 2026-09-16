@@ -1,5 +1,6 @@
 name: Microsoft Defender
-description: Collection of Microsoft Defender security APIs for threat protection, endpoint security, and security operations.
+description: Collection of Microsoft Defender security APIs for threat protection, endpoint security,
+  and security operations.
 deliveryModel:
   model: saas
   open_source: false
@@ -23,18 +24,22 @@ accessModel:
   source:
   - plans
   - authentication
-  - {url: 'https://security.microsoft.com', status: 302, note: 'declared website redirects to https://login.microsoftonline.com/common/oauth2/authorize?client_id=80ccca67-54bd-44ab-8625-4b79c4dc7775&response_type=code%20id_token&scope=openid%20profile&state=OpenIdConnect.AuthenticationProperties%3DRz3ddEkEW3sCl5UCgcVwX8a8Ir1Q6_ILuWrtConTQwwKtyKFNhW_moRzN-_q6IZS1dKFGGx7jegyPBSSIIASrDGabcBAEmiEmXBxJYDdh9NCfTTOtCeDZaIe-v_wXDk_JhcKYICC7FqM9r8ZJC9bqA&response_mode=form_post&nonce=639240508798129965.MTE2Y2IyNDgtZWNmMy00OTcyLTljNjktMWIyODdjNTQyODE4ZjIzNjY3OGMtNTBmMS00MmUwLWE3OWUtM2E5YjA5NWMxYzBi&client-request-id=a09eeb6f-0236-4bd1-b925-be28f3ebdf16&redirect_uri=https%3A%2F%2Fsecurity.microsoft.com%2F&x-client-SKU=ID_NET472&x-client-ver=8.22.0.0 — a different registrable domain (microsoft.com -> microsoftonline.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
+  - url: https://security.microsoft.com
+    status: 302
+    note: declared website redirects to https://login.microsoftonline.com/common/oauth2/authorize?client_id=80ccca67-54bd-44ab-8625-4b79c4dc7775&response_type=code%20id_token&scope=openid%20profile&state=OpenIdConnect.AuthenticationProperties%3DRz3ddEkEW3sCl5UCgcVwX8a8Ir1Q6_ILuWrtConTQwwKtyKFNhW_moRzN-_q6IZS1dKFGGx7jegyPBSSIIASrDGabcBAEmiEmXBxJYDdh9NCfTTOtCeDZaIe-v_wXDk_JhcKYICC7FqM9r8ZJC9bqA&response_mode=form_post&nonce=639240508798129965.MTE2Y2IyNDgtZWNmMy00OTcyLTljNjktMWIyODdjNTQyODE4ZjIzNjY3OGMtNTBmMS00MmUwLWE3OWUtM2E5YjA5NWMxYzBi&client-request-id=a09eeb6f-0236-4bd1-b925-be28f3ebdf16&redirect_uri=https%3A%2F%2Fsecurity.microsoft.com%2F&x-client-SKU=ID_NET472&x-client-ver=8.22.0.0
+      — a different registrable domain (microsoft.com -> microsoftonline.com), possible rename or acquisition
+      (probed 2026-09-03, roadmap#169)
   generated: '2026-07-22'
   method: derived
 image: https://www.microsoft.com/favicon.ico
 created: '2024-01-15'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-defender/refs/heads/main/apis.yml
 apis:
 - name: Microsoft Defender for Cloud Apps API
-  description: >-
-    Cloud Access Security Broker (CASB) API for discovering, investigating, and governing cloud apps.
+  description: Cloud Access Security Broker (CASB) API for discovering, investigating, and governing cloud
+    apps.
   image: https://www.microsoft.com/favicon.ico
   humanUrl: https://learn.microsoft.com/en-us/defender-cloud-apps/
   baseUrl: https://portal.cloudappsecurity.com/api
@@ -68,15 +73,14 @@ apis:
   - Threat Intelligence
   properties:
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/graph/api/resources/security-threatintelligence-overview
+    url: https://learn.microsoft.com/en-us/graph/api/resources/security-threatintelligence-overview
   - type: APIReference
     url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
   - type: Authentication
     url: https://learn.microsoft.com/en-us/graph/auth/
 - name: Microsoft Defender for Office 365 API
-  description: >-
-    API for email and collaboration protection including anti-phishing, anti-malware, and safe attachments.
+  description: API for email and collaboration protection including anti-phishing, anti-malware, and safe
+    attachments.
   image: https://www.microsoft.com/favicon.ico
   humanUrl: https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/
   baseUrl: https://graph.microsoft.com/v1.0/security
@@ -87,22 +91,18 @@ apis:
   - Safe Attachments
   properties:
   - type: Documentation
-    url: >-
-      https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/defender-for-office-365
+    url: https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/defender-for-office-365
   - type: Threat Protection
-    url: >-
-      https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/threat-explorer
+    url: https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/threat-explorer
   - type: Safe Links
     url: https://learn.microsoft.com/en-us/defender-office-365/safe-links-about
   - type: Safe Attachments
     url: https://learn.microsoft.com/en-us/defender-office-365/safe-attachments-about
   - type: Service Description
-    url: >-
-      https://learn.microsoft.com/en-us/office365/servicedescriptions/office-365-advanced-threat-protection-service-description
+    url: https://learn.microsoft.com/en-us/office365/servicedescriptions/office-365-advanced-threat-protection-service-description
 - name: Microsoft Defender XDR API
-  description: >-
-    Unified extended detection and response API for automating workflows based on shared incident and
-    advanced hunting tables across Microsoft security products.
+  description: Unified extended detection and response API for automating workflows based on shared incident
+    and advanced hunting tables across Microsoft security products.
   image: https://www.microsoft.com/favicon.ico
   humanUrl: https://learn.microsoft.com/en-us/defender-xdr/api-overview
   baseUrl: https://api.security.microsoft.com/api
@@ -130,12 +130,10 @@ apis:
   - type: ErrorCodes
     url: https://learn.microsoft.com/en-us/defender-xdr/api-error-codes
 - name: Microsoft Defender for Cloud REST API
-  description: >-
-    REST API for unified security management and advanced threat protection across hybrid cloud workloads
-    in Azure, other clouds, and on-premises.
+  description: REST API for unified security management and advanced threat protection across hybrid cloud
+    workloads in Azure, other clouds, and on-premises.
   image: https://www.microsoft.com/favicon.ico
-  humanUrl: >-
-    https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction
+  humanUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction
   baseUrl: https://management.azure.com
   tags:
   - Azure Security
@@ -153,9 +151,8 @@ apis:
   - type: ReleaseNotes
     url: https://learn.microsoft.com/en-us/azure/defender-for-cloud/release-notes
 - name: Microsoft Defender for Identity API
-  description: >-
-    API for identity-based attack detection and investigation across on-premises Active Directory and
-    hybrid environments, with sensor management via Microsoft Graph.
+  description: API for identity-based attack detection and investigation across on-premises Active Directory
+    and hybrid environments, with sensor management via Microsoft Graph.
   image: https://www.microsoft.com/favicon.ico
   humanUrl: https://learn.microsoft.com/en-us/defender-for-identity/
   baseUrl: https://graph.microsoft.com/v1.0/security/identities
@@ -175,9 +172,8 @@ apis:
     url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview
 - aid: microsoft-defender:microsoft-defender-alerts-api
   name: Microsoft Defender Alerts API
-  description: >-
-    Manage security alerts generated by Microsoft Defender for Endpoint. Alerts represent detected threats,
-    suspicious activities, and security events on endpoints.
+  description: Manage security alerts generated by Microsoft Defender for Endpoint. Alerts represent detected
+    threats, suspicious activities, and security events on endpoints.
   tags:
   - Alerts
   properties:
@@ -192,8 +188,7 @@ apis:
   - type: Authentication
     url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp
   - type: Pricing
-    url: >-
-      https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
+    url: https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
   - type: APIReference
     url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-list
   - type: ReleaseNotes
@@ -211,13 +206,11 @@ apis:
   - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
   - type: CodeExamples
-    url: >-
-      https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
+    url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
 - aid: microsoft-defender:microsoft-defender-machines-api
   name: Microsoft Defender Machines API
-  description: >-
-    Manage devices (machines) that have communicated with Microsoft Defender for Endpoint. Retrieve device
-    information, health status, risk scores, and exposure levels.
+  description: Manage devices (machines) that have communicated with Microsoft Defender for Endpoint.
+    Retrieve device information, health status, risk scores, and exposure levels.
   tags:
   - Machines
   properties:
@@ -232,8 +225,7 @@ apis:
   - type: Authentication
     url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp
   - type: Pricing
-    url: >-
-      https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
+    url: https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
   - type: APIReference
     url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-list
   - type: ReleaseNotes
@@ -251,13 +243,11 @@ apis:
   - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
   - type: CodeExamples
-    url: >-
-      https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
+    url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
 - aid: microsoft-defender:microsoft-defender-vulnerabilities-api
   name: Microsoft Defender Vulnerabilities API
-  description: >-
-    Retrieve vulnerability information from Microsoft Defender Vulnerability Management. Access CVE data,
-    severity scores, exploit information, and exposure metrics.
+  description: Retrieve vulnerability information from Microsoft Defender Vulnerability Management. Access
+    CVE data, severity scores, exploit information, and exposure metrics.
   tags:
   - Vulnerabilities
   properties:
@@ -272,8 +262,7 @@ apis:
   - type: Authentication
     url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp
   - type: Pricing
-    url: >-
-      https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
+    url: https://www.microsoft.com/en-us/security/business/endpoint-security/microsoft-defender-endpoint-pricing
   - type: APIReference
     url: https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-list
   - type: ReleaseNotes
@@ -291,48 +280,52 @@ apis:
   - type: SDKs
     url: https://learn.microsoft.com/en-us/graph/sdks/sdks-overview
   - type: CodeExamples
-    url: >-
-      https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
+    url: https://learn.microsoft.com/en-us/graph/api/resources/security-api-overview#common-use-cases
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 common:
-  - type: Website
-    url: https://www.microsoft.com/
-  - type: CapabilityMap
-    url: capabilities/microsoft-defender-capability-edges.yml
-    name: Microsoft Defender Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/microsoft-defender-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/microsoft-defender-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/microsoft-defender-domain-security.yml
-  - type: Authentication
-    url: authentication/microsoft-defender-authentication.yml
-  - type: OAuthScopes
-    url: scopes/microsoft-defender-scopes.yml
-  - type: GitHubOrganization
-    url: https://github.com/MicrosoftDocs
-  - type: Portal
-    url: https://security.microsoft.com
-  - type: Documentation Hub
-    url: https://learn.microsoft.com/en-us/microsoft-365/security/
-  - type: StatusPage
-    url: https://status.azure.com/
-  - type: TermsOfService
-    url: https://www.microsoft.com/en-us/legal/terms-of-use
-  - type: PrivacyPolicy
-    url: https://privacy.microsoft.com/en-us/privacystatement
-  - type: Developer Changelog
-    url: https://developer.microsoft.com/en-us/changelog
-  - type: Security Blog
-    url: https://www.microsoft.com/en-us/security/blog/
-  - type: Microsoft Graph Explorer
-    url: https://developer.microsoft.com/en-us/graph/graph-explorer
-  - type: Authentication Overview
-    url: https://learn.microsoft.com/en-us/graph/auth/
-  - type: Security Pricing Overview
-    url: https://www.microsoft.com/en-us/security/pricing-overview
+- type: Website
+  url: https://www.microsoft.com/
+- type: CapabilityMap
+  url: capabilities/microsoft-defender-capability-edges.yml
+  name: Microsoft Defender Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/microsoft-defender-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/microsoft-defender-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/microsoft-defender-domain-security.yml
+- type: Authentication
+  url: authentication/microsoft-defender-authentication.yml
+- type: OAuthScopes
+  url: scopes/microsoft-defender-scopes.yml
+- type: GitHubOrganization
+  url: https://github.com/MicrosoftDocs
+- type: Portal
+  url: https://security.microsoft.com
+- type: Documentation Hub
+  url: https://learn.microsoft.com/en-us/microsoft-365/security/
+- type: StatusPage
+  url: https://status.azure.com/
+- type: TermsOfService
+  url: https://www.microsoft.com/en-us/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://privacy.microsoft.com/en-us/privacystatement
+- type: Developer Changelog
+  url: https://developer.microsoft.com/en-us/changelog
+- type: Security Blog
+  url: https://www.microsoft.com/en-us/security/blog/
+- type: Microsoft Graph Explorer
+  url: https://developer.microsoft.com/en-us/graph/graph-explorer
+- type: Authentication Overview
+  url: https://learn.microsoft.com/en-us/graph/auth/
+- type: Security Pricing Overview
+  url: https://www.microsoft.com/en-us/security/pricing-overview
 x-parent: microsoft
 x-relationship: product
+tags:
+- Cloud Security
+- Data Protection
+- Threat Intelligence
+- Email Security
