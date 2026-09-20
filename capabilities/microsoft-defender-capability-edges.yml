@@ -1,0 +1,46 @@
+slug: microsoft-defender
+provider: Microsoft Defender
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Alerts
+  spec_file: microsoft-defender-alerts-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.94
+  evidence: '"API for endpoint detection and response"; "listAlerts  List alerts", "updateAlert", schemas
+    "AlertEvidence", "AlertComment"'
+  reason: 'Security alert triage within an EDR product: detection, investigation and response. This is
+    cybersecurity threat detection & response, not financial-crime alerting.'
+- tag: Vulnerabilities
+  spec_file: microsoft-defender-vulnerabilities-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.94
+  evidence: '"listVulnerabilities  List all vulnerabilities", "List machines affected by a vulnerability";
+    "threat and vulnerability management"'
+  reason: Operations enumerate vulnerabilities and affected assets — directly vulnerability scanning/remediation
+    management.
+- tag: Machines
+  spec_file: microsoft-defender-machines-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.75
+  evidence: '"listMachines  List machines", "List alerts for a machine", "List vulnerabilities for a machine"'
+  reason: Managed endpoint inventory within Defender for Endpoint, joined to alerts and vulnerabilities.
+    Clearly cybersecurity at L1, but it straddles threat response and vulnerability management, so no
+    L2 asserted.
