@@ -1,9 +1,7 @@
 {
   "provider": "microsoft-defender",
   "sources": [
-    "microsoft-defender-alerts-api-openapi.yml",
-    "microsoft-defender-machines-api-openapi.yml",
-    "microsoft-defender-vulnerabilities-api-openapi.yml"
+    "_original/microsoft-defender-for-endpoint-api-openapi.yml"
   ],
   "outputs": [
     "microsoft-defender-alerts-api-openapi.yml",
@@ -14,10 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "microsoft-defender-alerts-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "microsoft-defender-machines-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "microsoft-defender-vulnerabilities-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "microsoft-defender-for-endpoint-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "microsoft-defender-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "microsoft-defender-machines-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "microsoft-defender-vulnerabilities-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

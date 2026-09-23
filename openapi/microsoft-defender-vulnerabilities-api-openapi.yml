@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Defender for Endpoint Alerts Vulnerabilities API
+  title: Microsoft Defender for Endpoint Vulnerabilities API
   description: API for endpoint detection and response, threat and vulnerability management, and automated investigation and remediation. Provides programmatic access to alerts, machines, and vulnerabilities managed by Microsoft Defender for Endpoint.
   version: 1.0.0
   contact:
@@ -180,6 +180,24 @@ paths:
           description: Vulnerability not found.
 components:
   schemas:
+    MachineReference:
+      type: object
+      description: A reference to a machine affected by a vulnerability.
+      properties:
+        id:
+          type: string
+          description: The machine ID.
+        computerDnsName:
+          type: string
+          description: The fully qualified domain name of the machine.
+        osPlatform:
+          type: string
+          description: The operating system platform.
+        rbacGroupName:
+          type:
+          - string
+          - 'null'
+          description: The RBAC group name.
     Vulnerability:
       type: object
       description: Represents a known vulnerability (CVE) detected by Microsoft Defender Vulnerability Management, including severity, CVSS scoring, exploit information, and exposure metrics.
@@ -277,24 +295,6 @@ components:
           - UnderException
           - PartialException
           - null
-    MachineReference:
-      type: object
-      description: A reference to a machine affected by a vulnerability.
-      properties:
-        id:
-          type: string
-          description: The machine ID.
-        computerDnsName:
-          type: string
-          description: The fully qualified domain name of the machine.
-        osPlatform:
-          type: string
-          description: The operating system platform.
-        rbacGroupName:
-          type:
-          - string
-          - 'null'
-          description: The RBAC group name.
   securitySchemes:
     oauth2:
       type: oauth2

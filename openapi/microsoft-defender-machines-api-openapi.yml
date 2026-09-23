@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Defender for Endpoint Alerts Machines API
+  title: Microsoft Defender for Endpoint Machines API
   description: API for endpoint detection and response, threat and vulnerability management, and automated investigation and remediation. Provides programmatic access to alerts, machines, and vulnerabilities managed by Microsoft Defender for Endpoint.
   version: 1.0.0
   contact:
@@ -217,6 +217,24 @@ paths:
           description: Vulnerability not found.
 components:
   schemas:
+    MachineReference:
+      type: object
+      description: A reference to a machine affected by a vulnerability.
+      properties:
+        id:
+          type: string
+          description: The machine ID.
+        computerDnsName:
+          type: string
+          description: The fully qualified domain name of the machine.
+        osPlatform:
+          type: string
+          description: The operating system platform.
+        rbacGroupName:
+          type:
+          - string
+          - 'null'
+          description: The RBAC group name.
     Machine:
       type: object
       description: Represents a device (machine) that has communicated with Microsoft Defender for Endpoint, including its health status, risk assessment, and configuration details.
@@ -357,6 +375,30 @@ components:
           - 32-bit
           - 64-bit
           - null
+    RelatedUser:
+      type: object
+      description: Details of a user related to an alert.
+      properties:
+        userName:
+          type: string
+          description: The user name.
+        domainName:
+          type: string
+          description: The domain name.
+    AlertComment:
+      type: object
+      description: A comment associated with an alert.
+      properties:
+        comment:
+          type: string
+          description: The comment text.
+        createdBy:
+          type: string
+          description: The user who created the comment.
+        createdTime:
+          type: string
+          format: date-time
+          description: The date and time the comment was created.
     IpAddress:
       type: object
       description: An IP address associated with a machine.
@@ -373,6 +415,103 @@ components:
         operationalStatus:
           type: string
           description: The operational status of the network adapter.
+    Vulnerability:
+      type: object
+      description: Represents a known vulnerability (CVE) detected by Microsoft Defender Vulnerability Management, including severity, CVSS scoring, exploit information, and exposure metrics.
+      properties:
+        id:
+          type: string
+          description: The vulnerability ID (CVE identifier).
+          examples:
+          - CVE-2024-7256
+        name:
+          type: string
+          description: The vulnerability title.
+        description:
+          type: string
+          description: A detailed description of the vulnerability.
+        severity:
+          type: string
+          description: The severity of the vulnerability.
+          enum:
+          - Low
+          - Medium
+          - High
+          - Critical
+        cvssV3:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: The CVSS v3 score.
+        cvssVector:
+          type:
+          - string
+          - 'null'
+          description: A compressed textual representation that reflects the values used to derive the CVSS score.
+          examples:
+          - CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C
+        exposedMachines:
+          type: integer
+          format: int64
+          description: The number of exposed devices.
+        publishedOn:
+          type: string
+          format: date-time
+          description: The date when the vulnerability was published.
+        updatedOn:
+          type: string
+          format: date-time
+          description: The date when the vulnerability was last updated.
+        publicExploit:
+          type: boolean
+          description: Whether a public exploit exists.
+        exploitVerified:
+          type: boolean
+          description: Whether the exploit has been verified to work.
+        exploitInKit:
+          type: boolean
+          description: Whether the exploit is part of an exploit kit.
+        exploitTypes:
+          type: array
+          items:
+            type: string
+          description: The types of exploit effects.
+          examples:
+          - - Local privilege escalation
+            - Denial of service
+            - Local
+        exploitUris:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: Exploit source URLs.
+        cveSupportability:
+          type: string
+          description: The CVE supportability status.
+          enum:
+          - Supported
+          - NotSupported
+          - SupportedInPremium
+        epss:
+          type:
+          - number
+          - 'null'
+          description: The Exploit Prediction Scoring System (EPSS) probability that the vulnerability will be exploited, expressed as a value between 0 and 1.
+          minimum: 0
+          maximum: 1
+        status:
+          type:
+          - string
+          - 'null'
+          description: The remediation status of the vulnerability.
+          enum:
+          - RemediationRequired
+          - NoActionRequired
+          - UnderException
+          - PartialException
+          - null
     Alert:
       type: object
       description: Represents a security alert generated by Microsoft Defender for Endpoint, indicating a detected threat, suspicious activity, or security event on an endpoint.
@@ -580,34 +719,6 @@ components:
           items:
             $ref: '#/components/schemas/AlertEvidence'
           description: Evidence related to the alert.
-    MachineReference:
-      type: object
-      description: A reference to a machine affected by a vulnerability.
-      properties:
-        id:
-          type: string
-          description: The machine ID.
-        computerDnsName:
-          type: string
-          description: The fully qualified domain name of the machine.
-        osPlatform:
-          type: string
-          description: The operating system platform.
-        rbacGroupName:
-          type:
-          - string
-          - 'null'
-          description: The RBAC group name.
-    RelatedUser:
-      type: object
-      description: Details of a user related to an alert.
-      properties:
-        userName:
-          type: string
-          description: The user name.
-        domainName:
-          type: string
-          description: The domain name.
     AlertEvidence:
       type: object
       description: Evidence associated with an alert. Can represent various entity types including User, Process, File, IP address, and URL.
@@ -748,117 +859,6 @@ components:
           - Detected
           - Blocked
           - Prevented
-          - null
-    AlertComment:
-      type: object
-      description: A comment associated with an alert.
-      properties:
-        comment:
-          type: string
-          description: The comment text.
-        createdBy:
-          type: string
-          description: The user who created the comment.
-        createdTime:
-          type: string
-          format: date-time
-          description: The date and time the comment was created.
-    Vulnerability:
-      type: object
-      description: Represents a known vulnerability (CVE) detected by Microsoft Defender Vulnerability Management, including severity, CVSS scoring, exploit information, and exposure metrics.
-      properties:
-        id:
-          type: string
-          description: The vulnerability ID (CVE identifier).
-          examples:
-          - CVE-2024-7256
-        name:
-          type: string
-          description: The vulnerability title.
-        description:
-          type: string
-          description: A detailed description of the vulnerability.
-        severity:
-          type: string
-          description: The severity of the vulnerability.
-          enum:
-          - Low
-          - Medium
-          - High
-          - Critical
-        cvssV3:
-          type:
-          - number
-          - 'null'
-          format: double
-          description: The CVSS v3 score.
-        cvssVector:
-          type:
-          - string
-          - 'null'
-          description: A compressed textual representation that reflects the values used to derive the CVSS score.
-          examples:
-          - CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:U/RL:O/RC:C
-        exposedMachines:
-          type: integer
-          format: int64
-          description: The number of exposed devices.
-        publishedOn:
-          type: string
-          format: date-time
-          description: The date when the vulnerability was published.
-        updatedOn:
-          type: string
-          format: date-time
-          description: The date when the vulnerability was last updated.
-        publicExploit:
-          type: boolean
-          description: Whether a public exploit exists.
-        exploitVerified:
-          type: boolean
-          description: Whether the exploit has been verified to work.
-        exploitInKit:
-          type: boolean
-          description: Whether the exploit is part of an exploit kit.
-        exploitTypes:
-          type: array
-          items:
-            type: string
-          description: The types of exploit effects.
-          examples:
-          - - Local privilege escalation
-            - Denial of service
-            - Local
-        exploitUris:
-          type: array
-          items:
-            type: string
-            format: uri
-          description: Exploit source URLs.
-        cveSupportability:
-          type: string
-          description: The CVE supportability status.
-          enum:
-          - Supported
-          - NotSupported
-          - SupportedInPremium
-        epss:
-          type:
-          - number
-          - 'null'
-          description: The Exploit Prediction Scoring System (EPSS) probability that the vulnerability will be exploited, expressed as a value between 0 and 1.
-          minimum: 0
-          maximum: 1
-        status:
-          type:
-          - string
-          - 'null'
-          description: The remediation status of the vulnerability.
-          enum:
-          - RemediationRequired
-          - NoActionRequired
-          - UnderException
-          - PartialException
           - null
   securitySchemes:
     oauth2:
