@@ -217,38 +217,6 @@ paths:
           description: Vulnerability not found.
 components:
   schemas:
-    AlertComment:
-      type: object
-      description: A comment associated with an alert.
-      properties:
-        comment:
-          type: string
-          description: The comment text.
-        createdBy:
-          type: string
-          description: The user who created the comment.
-        createdTime:
-          type: string
-          format: date-time
-          description: The date and time the comment was created.
-    MachineReference:
-      type: object
-      description: A reference to a machine affected by a vulnerability.
-      properties:
-        id:
-          type: string
-          description: The machine ID.
-        computerDnsName:
-          type: string
-          description: The fully qualified domain name of the machine.
-        osPlatform:
-          type: string
-          description: The operating system platform.
-        rbacGroupName:
-          type:
-          - string
-          - 'null'
-          description: The RBAC group name.
     Machine:
       type: object
       description: Represents a device (machine) that has communicated with Microsoft Defender for Endpoint, including its health status, risk assessment, and configuration details.
@@ -389,6 +357,32 @@ components:
           - 32-bit
           - 64-bit
           - null
+    RelatedUser:
+      type: object
+      description: Details of a user related to an alert.
+      properties:
+        userName:
+          type: string
+          description: The user name.
+        domainName:
+          type: string
+          description: The domain name.
+    IpAddress:
+      type: object
+      description: An IP address associated with a machine.
+      properties:
+        ipAddress:
+          type: string
+          description: The IP address.
+        macAddress:
+          type: string
+          description: The MAC address.
+        type:
+          type: string
+          description: The type of IP address.
+        operationalStatus:
+          type: string
+          description: The operational status of the network adapter.
     Vulnerability:
       type: object
       description: Represents a known vulnerability (CVE) detected by Microsoft Defender Vulnerability Management, including severity, CVSS scoring, exploit information, and exposure metrics.
@@ -693,32 +687,6 @@ components:
           items:
             $ref: '#/components/schemas/AlertEvidence'
           description: Evidence related to the alert.
-    IpAddress:
-      type: object
-      description: An IP address associated with a machine.
-      properties:
-        ipAddress:
-          type: string
-          description: The IP address.
-        macAddress:
-          type: string
-          description: The MAC address.
-        type:
-          type: string
-          description: The type of IP address.
-        operationalStatus:
-          type: string
-          description: The operational status of the network adapter.
-    RelatedUser:
-      type: object
-      description: Details of a user related to an alert.
-      properties:
-        userName:
-          type: string
-          description: The user name.
-        domainName:
-          type: string
-          description: The domain name.
     AlertEvidence:
       type: object
       description: Evidence associated with an alert. Can represent various entity types including User, Process, File, IP address, and URL.
@@ -860,6 +828,38 @@ components:
           - Blocked
           - Prevented
           - null
+    AlertComment:
+      type: object
+      description: A comment associated with an alert.
+      properties:
+        comment:
+          type: string
+          description: The comment text.
+        createdBy:
+          type: string
+          description: The user who created the comment.
+        createdTime:
+          type: string
+          format: date-time
+          description: The date and time the comment was created.
+    MachineReference:
+      type: object
+      description: A reference to a machine affected by a vulnerability.
+      properties:
+        id:
+          type: string
+          description: The machine ID.
+        computerDnsName:
+          type: string
+          description: The fully qualified domain name of the machine.
+        osPlatform:
+          type: string
+          description: The operating system platform.
+        rbacGroupName:
+          type:
+          - string
+          - 'null'
+          description: The RBAC group name.
   securitySchemes:
     oauth2:
       type: oauth2
