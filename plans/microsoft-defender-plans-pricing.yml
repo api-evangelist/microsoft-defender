@@ -375,3 +375,152 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
     url: https://www.microsoft.com/security/business/microsoft-defender
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  - subscription
+  units:
+  - compute
+  - negotiated
+  - period
+  - seat
+  plans:
+  - name: Defender for Endpoint Plan 1
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Defender for Endpoint Plan 2
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Defender for Business (SMB)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Defender for Office 365 Plan 1
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Defender for Office 365 Plan 2
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Defender for Identity
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Defender for Cloud Apps (CASB)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Defender for Cloud — Foundational CSPM (Free)
+    access: freemium
+    model: free
+    model_how: derived
+    units:
+    - period
+    periods:
+    - month
+  - name: Defender for Cloud — Defender CSPM (Plan 2)
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: Defender for Servers Plan 1
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - per-use
+  - name: Defender for Servers Plan 2
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - per-use
+  - name: Defender for Storage
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: Defender for Databases
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - per-use
+  - name: Defender for Containers
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    periods:
+    - per-use
+  - name: Microsoft Defender XDR (formerly Microsoft 365 Defender)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: M365 E5 Security Bundle
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: Enterprise Agreement / Volume Licensing
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
